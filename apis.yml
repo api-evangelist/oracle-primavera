@@ -1,0 +1,18 @@
+aid: oracle-primavera
+url: https://raw.githubusercontent.com/api-evangelist/oracle-primavera/refs/heads/main/apis.yml
+apis:
+- aid: oracle-primavera:oracle-primavera-api
+  name: Oracle Primavera P6 Scheduling API
+  tags:
+  - Construction
+  - Scheduling
+  - Project Management
+  - XML
+  image: https://raw.githubusercontent.com/api-evangelist/oracle-primavera/refs/heads/main/image.png
+  humanURL: https://docs.oracle.com/en/industries/construction-engineering/primavera/
+  baseURL: https://api.oracle-primavera.example.com
+  properties:
+  - url: https://docs.oracle.com/en/industries/construction-engineering/primavera/
+    type: Documentation
+  description: >-
+    Oracle Primavera P6 provides project scheduling and portfolio management APIs for construction, engineering, and capital projects. REST and XML APIs enable access to WBS structures, activity schedules, resource assignments, and critical path analysis.
