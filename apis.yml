@@ -1,6 +1,58 @@
 aid: oracle-primavera
 url: https://raw.githubusercontent.com/api-evangelist/oracle-primavera/refs/heads/main/apis.yml
 apis:
+- aid: oracle-primavera:oracle-primavera-p6-eppm-api
+  name: Oracle Primavera P6 EPPM REST API
+  tags:
+  - Construction
+  - Scheduling
+  - Project Management
+  - REST
+  - EPPM
+  image: https://raw.githubusercontent.com/api-evangelist/oracle-primavera/refs/heads/main/image.png
+  humanURL: https://docs.oracle.com/en/industries/construction-engineering/primavera-p6-project/index.html
+  baseURL: https://api.oracle-primavera.example.com
+  properties:
+  - url: https://docs.oracle.com/en/industries/construction-engineering/primavera-p6-project/index.html
+    type: Documentation
+  - url: https://docs.oracle.com/cd/G48897_01/index.htm
+    type: Reference
+  - url: https://docs.oracle.com/cd/E64687_01/EPPM/EPPM_CFO.html
+    type: ChangeLog
+  description: >-
+    Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments. Documentation covers version 6.2.1 through version 26 (2026).
+- aid: oracle-primavera:oracle-primavera-gateway-api
+  name: Oracle Primavera Gateway Integration API
+  tags:
+  - Construction
+  - Scheduling
+  - Project Management
+  - Integration
+  - XML
+  image: https://raw.githubusercontent.com/api-evangelist/oracle-primavera/refs/heads/main/image.png
+  humanURL: https://docs.oracle.com/en/industries/construction-engineering/primavera-gateway/index.html
+  baseURL: https://api.oracle-primavera.example.com
+  properties:
+  - url: https://docs.oracle.com/en/industries/construction-engineering/primavera-gateway/index.html
+    type: Documentation
+  description: >-
+    Oracle Primavera Gateway provides integration APIs for connecting Primavera P6 with other Oracle and third-party applications. Enables bi-directional data exchange for projects, resources, cost accounts, and activity data between P6 EPPM and ERP, asset management, and financial systems.
+- aid: oracle-primavera:oracle-primavera-analytics-api
+  name: Oracle Primavera Analytics API
+  tags:
+  - Construction
+  - Scheduling
+  - Project Management
+  - Analytics
+  - Reporting
+  image: https://raw.githubusercontent.com/api-evangelist/oracle-primavera/refs/heads/main/image.png
+  humanURL: https://docs.oracle.com/en/industries/construction-engineering/primavera-analytics/index.html
+  baseURL: https://api.oracle-primavera.example.com
+  properties:
+  - url: https://docs.oracle.com/en/industries/construction-engineering/primavera-analytics/index.html
+    type: Documentation
+  description: >-
+    Oracle Primavera Analytics provides reporting and business intelligence APIs for portfolio performance insights, project health dashboards, resource utilization analysis, and earned value management reporting across construction and engineering portfolios.
 - aid: oracle-primavera:oracle-primavera-api
   name: Oracle Primavera P6 Scheduling API
   tags:
@@ -16,3 +68,20 @@ apis:
     type: Documentation
   description: >-
     Oracle Primavera P6 provides project scheduling and portfolio management APIs for construction, engineering, and capital projects. REST and XML APIs enable access to WBS structures, activity schedules, resource assignments, and critical path analysis.
+common:
+- url: https://docs.oracle.com/en/industries/construction-engineering/primavera/
+  type: Portal
+- url: https://www.oracle.com/construction-engineering/primavera/
+  type: Website
+- url: https://docs.oracle.com/en/industries/construction-engineering/primavera-p6-project/index.html
+  type: Documentation
+- url: https://docs.oracle.com/cd/G48897_01/index.htm
+  type: Reference
+- url: https://docs.oracle.com/cd/E64687_01/EPPM/EPPM_CFO.html
+  type: ChangeLog
+- url: https://mylearn.oracle.com/construction
+  type: GettingStarted
+maintainer:
+  name: Kin Lane
+  email: kin@apievangelist.com
+modified: '2026-03-18'
