@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/oracle-primavera/json-schema/oracle-primavera-project-schema.json",
+  "title": "Oracle Primavera P6 Project",
+  "description": "Schema for an Oracle Primavera P6 EPPM project, representing an enterprise project with schedule, cost, and resource data.",
+  "type": "object",
+  "properties": {
+    "ObjectId": {
+      "type": "integer",
+      "description": "System-generated unique identifier"
+    },
+    "Id": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "User-defined project ID"
+    },
+    "Name": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Project name"
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["Active", "Inactive", "What-if", "Planned"],
+      "description": "Current project status"
+    },
+    "PlannedStartDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Planned project start date"
+    },
+    "PlannedFinishDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Planned project finish date"
+    },
+    "ActualStartDate": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Actual project start date"
+    },
+    "ActualFinishDate": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Actual project finish date"
+    },
+    "DataDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Status date used for progress tracking"
+    },
+    "PercentComplete": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Overall project percent complete"
+    },
+    "TotalBudgetCost": {
+      "type": "number",
+      "description": "Total budget at completion cost"
+    },
+    "ActualTotalCost": {
+      "type": "number",
+      "description": "Actual total cost to date"
+    },
+    "EarnedValueCost": {
+      "type": "number",
+      "description": "Budgeted cost of work performed (BCWP)"
+    },
+    "PlannedValueCost": {
+      "type": "number",
+      "description": "Budgeted cost of work scheduled (BCWS)"
+    },
+    "CostPerformanceIndex": {
+      "type": "number",
+      "description": "Earned value CPI (BCWP / ACWP)"
+    },
+    "SchedulePerformanceIndex": {
+      "type": "number",
+      "description": "Earned value SPI (BCWP / BCWS)"
+    },
+    "RiskLevel": {
+      "type": "string",
+      "enum": ["Very High", "High", "Medium", "Low", "Very Low"],
+      "description": "Project risk rating"
+    },
+    "WBSObjectId": {
+      "type": "integer",
+      "description": "Root WBS element ObjectId"
+    },
+    "OBSObjectId": {
+      "type": "integer",
+      "description": "Responsible OBS node ObjectId"
+    },
+    "CreateDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the project was created"
+    },
+    "LastUpdateDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the project was last modified"
+    }
+  },
+  "required": ["ObjectId", "Id", "Name", "Status"],
+  "examples": [
+    {
+      "ObjectId": 10001,
+      "Id": "PROJ-001",
+      "Name": "North Terminal Expansion",
+      "Status": "Active",
+      "PlannedStartDate": "2025-01-15T00:00:00Z",
+      "PlannedFinishDate": "2026-12-31T00:00:00Z",
+      "DataDate": "2026-03-01T00:00:00Z",
+      "PercentComplete": 28.5,
+      "TotalBudgetCost": 45000000.0,
+      "EarnedValueCost": 12825000.0,
+      "RiskLevel": "Medium",
+      "WBSObjectId": 20001
+    }
+  ]
+}

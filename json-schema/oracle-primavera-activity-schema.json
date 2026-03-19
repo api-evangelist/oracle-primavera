@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/oracle-primavera/json-schema/oracle-primavera-activity-schema.json",
+  "title": "Oracle Primavera P6 Activity",
+  "description": "Schema for an Oracle Primavera P6 schedule activity, representing a work item within a project WBS.",
+  "type": "object",
+  "properties": {
+    "ObjectId": {
+      "type": "integer",
+      "description": "System-generated unique identifier"
+    },
+    "Id": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "User-defined activity ID"
+    },
+    "Name": {
+      "type": "string",
+      "maxLength": 120,
+      "description": "Activity name"
+    },
+    "ProjectObjectId": {
+      "type": "integer",
+      "description": "Parent project ObjectId"
+    },
+    "WBSObjectId": {
+      "type": "integer",
+      "description": "Parent WBS element ObjectId"
+    },
+    "Type": {
+      "type": "string",
+      "enum": [
+        "Task Dependent",
+        "Resource Dependent",
+        "Level of Effort",
+        "Start Milestone",
+        "Finish Milestone",
+        "WBS Summary"
+      ],
+      "description": "Activity type"
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["Not Started", "In Progress", "Completed"],
+      "description": "Current activity status"
+    },
+    "PercentComplete": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Activity percent complete"
+    },
+    "PercentCompleteType": {
+      "type": "string",
+      "enum": ["Physical", "Duration", "Units"],
+      "description": "Method for calculating percent complete"
+    },
+    "PlannedStartDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "PlannedFinishDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ActualStartDate": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "ActualFinishDate": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "RemainingStartDate": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "RemainingFinishDate": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "PlannedDuration": {
+      "type": "number",
+      "description": "Planned duration in hours"
+    },
+    "ActualDuration": {
+      "type": "number",
+      "description": "Actual duration accrued in hours"
+    },
+    "RemainingDuration": {
+      "type": "number",
+      "description": "Remaining duration in hours"
+    },
+    "TotalFloat": {
+      "type": "number",
+      "description": "Total float in hours; negative values indicate critical path"
+    },
+    "FreeFloat": {
+      "type": "number",
+      "description": "Free float in hours"
+    },
+    "CriticalFlag": {
+      "type": "boolean",
+      "description": "True if activity is on the critical path"
+    },
+    "CalendarObjectId": {
+      "type": "integer",
+      "description": "Assigned work calendar ObjectId"
+    },
+    "PrimaryConstraintType": {
+      "type": "string",
+      "enum": [
+        "None",
+        "Start On",
+        "Start On or Before",
+        "Start On or After",
+        "Finish On",
+        "Finish On or Before",
+        "Finish On or After",
+        "Mandatory Start",
+        "Mandatory Finish",
+        "As Late as Possible"
+      ]
+    },
+    "PrimaryConstraintDate": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    }
+  },
+  "required": ["ObjectId", "Id", "Name", "ProjectObjectId", "WBSObjectId", "Type", "Status"],
+  "examples": [
+    {
+      "ObjectId": 30001,
+      "Id": "A1000",
+      "Name": "Site Preparation",
+      "ProjectObjectId": 10001,
+      "WBSObjectId": 20010,
+      "Type": "Task Dependent",
+      "Status": "Completed",
+      "PercentComplete": 100.0,
+      "PercentCompleteType": "Physical",
+      "PlannedStartDate": "2025-01-15T08:00:00Z",
+      "PlannedFinishDate": "2025-03-01T17:00:00Z",
+      "ActualStartDate": "2025-01-16T08:00:00Z",
+      "ActualFinishDate": "2025-03-05T17:00:00Z",
+      "PlannedDuration": 288.0,
+      "ActualDuration": 296.0,
+      "RemainingDuration": 0.0,
+      "TotalFloat": -8.0,
+      "CriticalFlag": true
+    }
+  ]
+}

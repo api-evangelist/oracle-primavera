@@ -1,0 +1,111 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "primavera": "https://docs.oracle.com/en/industries/construction-engineering/primavera/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Project": {
+      "@id": "schema:Project",
+      "@type": "@id"
+    },
+    "ObjectId": {
+      "@id": "schema:identifier",
+      "@type": "xsd:integer"
+    },
+    "Id": {
+      "@id": "schema:identifier"
+    },
+    "Name": {
+      "@id": "schema:name"
+    },
+    "Status": {
+      "@id": "schema:status"
+    },
+    "PlannedStartDate": {
+      "@id": "schema:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "PlannedFinishDate": {
+      "@id": "schema:endDate",
+      "@type": "xsd:dateTime"
+    },
+    "ActualStartDate": {
+      "@id": "primavera:actualStartDate",
+      "@type": "xsd:dateTime"
+    },
+    "ActualFinishDate": {
+      "@id": "primavera:actualFinishDate",
+      "@type": "xsd:dateTime"
+    },
+    "PercentComplete": {
+      "@id": "schema:percentComplete",
+      "@type": "xsd:decimal"
+    },
+    "TotalBudgetCost": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "DataDate": {
+      "@id": "primavera:dataDate",
+      "@type": "xsd:dateTime"
+    },
+    "RiskLevel": {
+      "@id": "primavera:riskLevel"
+    },
+
+    "Activity": {
+      "@id": "schema:Action",
+      "@type": "@id"
+    },
+    "PlannedDuration": {
+      "@id": "schema:duration",
+      "@type": "xsd:decimal"
+    },
+    "CriticalFlag": {
+      "@id": "primavera:criticalFlag",
+      "@type": "xsd:boolean"
+    },
+    "TotalFloat": {
+      "@id": "primavera:totalFloat",
+      "@type": "xsd:decimal"
+    },
+    "WBSElement": {
+      "@id": "schema:ItemList",
+      "@type": "@id"
+    },
+
+    "Resource": {
+      "@id": "schema:Person",
+      "@type": "@id"
+    },
+    "ResourceType": {
+      "@id": "primavera:resourceType"
+    },
+    "PricePerUnit": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+
+    "ResourceAssignment": {
+      "@id": "schema:ScheduleAction",
+      "@type": "@id"
+    },
+    "PlannedUnits": {
+      "@id": "primavera:plannedUnits",
+      "@type": "xsd:decimal"
+    },
+    "ActualUnits": {
+      "@id": "primavera:actualUnits",
+      "@type": "xsd:decimal"
+    },
+    "PlannedCost": {
+      "@id": "primavera:plannedCost",
+      "@type": "xsd:decimal"
+    },
+    "ActualCost": {
+      "@id": "primavera:actualCost",
+      "@type": "xsd:decimal"
+    }
+  }
+}

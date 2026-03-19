@@ -1,0 +1,834 @@
+openapi: 3.1.0
+info:
+  title: Oracle Primavera P6 EPPM REST API
+  description: >-
+    Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise
+    project portfolio management data including WBS structures, activity schedules,
+    resource assignments, critical path analysis, and portfolio dashboards. Available
+    for both cloud and on-premises deployments.
+  version: 26.0.0
+  contact:
+    name: Oracle Support
+    url: https://support.oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/legal/terms/
+servers:
+  - url: https://{host}/p6ws/rest/v1
+    description: P6 EPPM REST API
+    variables:
+      host:
+        default: primavera.example.com
+        description: P6 EPPM server hostname
+
+security:
+  - basicAuth: []
+  - oauth2: []
+
+tags:
+  - name: Projects
+    description: Project management operations
+  - name: Activities
+    description: Activity scheduling and management
+  - name: WBS
+    description: Work Breakdown Structure management
+  - name: Resources
+    description: Resource and role management
+  - name: ResourceAssignments
+    description: Resource assignment operations
+  - name: Calendars
+    description: Calendar management
+  - name: Baselines
+    description: Project baseline operations
+  - name: Portfolios
+    description: Portfolio management
+
+paths:
+  /projects:
+    get:
+      operationId: listProjects
+      summary: List projects
+      description: Returns a collection of projects accessible to the authenticated user, with optional field filtering.
+      tags:
+        - Projects
+      parameters:
+        - name: Fields
+          in: query
+          description: Comma-separated list of fields to return
+          schema:
+            type: string
+            example: ObjectId,Id,Name,Status,StartDate,FinishDate
+        - name: Filter
+          in: query
+          description: RSQL filter expression
+          schema:
+            type: string
+        - name: OrderBy
+          in: query
+          description: Field to sort by
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Pagination offset
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          description: Maximum records to return
+          schema:
+            type: integer
+            default: 100
+            maximum: 1000
+      responses:
+        '200':
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      operationId: createProject
+      summary: Create a project
+      description: Creates a new project in the P6 EPPM system.
+      tags:
+        - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreate'
+      responses:
+        '200':
+          description: Created project object IDs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    ObjectId:
+                      type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /projects/{objectId}:
+    get:
+      operationId: getProject
+      summary: Get a project
+      description: Returns a single project by its ObjectId.
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/ObjectId'
+        - name: Fields
+          in: query
+          description: Comma-separated list of fields to return
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Project details
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateProject
+      summary: Update a project
+      description: Updates fields on an existing project.
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUpdate'
+      responses:
+        '200':
+          description: Update confirmation
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteProject
+      summary: Delete a project
+      description: Permanently deletes a project and all its child objects.
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/ObjectId'
+      responses:
+        '200':
+          description: Delete confirmation
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /activities:
+    get:
+      operationId: listActivities
+      summary: List activities
+      description: Returns activities with scheduling data including planned dates, durations, and relationships.
+      tags:
+        - Activities
+      parameters:
+        - name: Fields
+          in: query
+          schema:
+            type: string
+            example: ObjectId,Id,Name,PlannedStartDate,PlannedFinishDate,ActualStartDate,ActualFinishDate,Status,PercentComplete
+        - name: Filter
+          in: query
+          description: Filter by project or WBS; e.g. ProjectObjectId eq 12345
+          schema:
+            type: string
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: List of activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createActivity
+      summary: Create an activity
+      description: Creates a new activity within a project.
+      tags:
+        - Activities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityCreate'
+      responses:
+        '200':
+          description: Created activity ObjectId
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    ObjectId:
+                      type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /activities/{objectId}:
+    get:
+      operationId: getActivity
+      summary: Get an activity
+      description: Returns details for a single activity.
+      tags:
+        - Activities
+      parameters:
+        - $ref: '#/components/parameters/ObjectId'
+        - name: Fields
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Activity details
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateActivity
+      summary: Update an activity
+      description: Updates scheduling fields on an activity.
+      tags:
+        - Activities
+      parameters:
+        - $ref: '#/components/parameters/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityUpdate'
+      responses:
+        '200':
+          description: Update confirmation
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /wbss:
+    get:
+      operationId: listWBS
+      summary: List WBS elements
+      description: Returns Work Breakdown Structure elements for projects.
+      tags:
+        - WBS
+      parameters:
+        - name: Fields
+          in: query
+          schema:
+            type: string
+            example: ObjectId,Code,Name,ProjectObjectId,ParentObjectId,SequenceNumber
+        - name: Filter
+          in: query
+          schema:
+            type: string
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: List of WBS elements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WBSElement'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /resources:
+    get:
+      operationId: listResources
+      summary: List resources
+      description: Returns labor, non-labor, and material resources.
+      tags:
+        - Resources
+      parameters:
+        - name: Fields
+          in: query
+          schema:
+            type: string
+            example: ObjectId,Id,Name,ResourceType,UnitOfMeasure,PricePerUnit
+        - name: Filter
+          in: query
+          schema:
+            type: string
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: List of resources
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Resource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /resourceassignments:
+    get:
+      operationId: listResourceAssignments
+      summary: List resource assignments
+      description: Returns resource-to-activity assignments with planned and actual units.
+      tags:
+        - ResourceAssignments
+      parameters:
+        - name: Fields
+          in: query
+          schema:
+            type: string
+            example: ObjectId,ActivityObjectId,ResourceObjectId,PlannedUnits,ActualUnits,PlannedCost,ActualCost
+        - name: Filter
+          in: query
+          schema:
+            type: string
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: List of resource assignments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceAssignment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /baselines:
+    get:
+      operationId: listBaselines
+      summary: List baselines
+      description: Returns project baselines including planned dates and costs.
+      tags:
+        - Baselines
+      parameters:
+        - name: Fields
+          in: query
+          schema:
+            type: string
+            example: ObjectId,Name,ProjectObjectId,BaselineType,LastUpdateDate
+        - name: Filter
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of baselines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Baseline'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication with P6 username and password
+    oauth2:
+      type: oauth2
+      description: Oracle Identity Cloud Service OAuth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://identity.oraclecloud.com/oauth2/v1/authorize
+          tokenUrl: https://identity.oraclecloud.com/oauth2/v1/token
+          scopes:
+            read: Read access to P6 data
+            write: Write access to P6 data
+
+  parameters:
+    ObjectId:
+      name: objectId
+      in: path
+      required: true
+      description: Unique numeric ObjectId
+      schema:
+        type: integer
+        format: int64
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Project:
+      type: object
+      description: An Oracle Primavera P6 project
+      properties:
+        ObjectId:
+          type: integer
+          description: Unique system-generated identifier
+        Id:
+          type: string
+          description: User-defined project ID (up to 40 chars)
+        Name:
+          type: string
+          description: Project name
+        Status:
+          type: string
+          enum: [Active, Inactive, What-if, Planned]
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
+        ActualStartDate:
+          type: string
+          format: date-time
+          nullable: true
+        ActualFinishDate:
+          type: string
+          format: date-time
+          nullable: true
+        DataDate:
+          type: string
+          format: date-time
+        PercentComplete:
+          type: number
+          format: double
+          minimum: 0
+          maximum: 100
+        TotalBudgetCost:
+          type: number
+          format: double
+        EarnedValueCost:
+          type: number
+          format: double
+        PlannedTotalCost:
+          type: number
+          format: double
+        RiskLevel:
+          type: string
+          enum: [Very High, High, Medium, Low, Very Low]
+        WBSObjectId:
+          type: integer
+          description: Root WBS element ObjectId
+        OBSObjectId:
+          type: integer
+          description: Responsible OBS element
+        LastUpdateDate:
+          type: string
+          format: date-time
+        CreateDate:
+          type: string
+          format: date-time
+
+    ProjectCreate:
+      type: object
+      required:
+        - Name
+        - Id
+        - WBSObjectId
+      properties:
+        Id:
+          type: string
+        Name:
+          type: string
+        Status:
+          type: string
+          enum: [Active, Inactive, What-if, Planned]
+          default: Active
+        PlannedStartDate:
+          type: string
+          format: date-time
+        WBSObjectId:
+          type: integer
+
+    ProjectUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        Name:
+          type: string
+        Status:
+          type: string
+          enum: [Active, Inactive, What-if, Planned]
+        DataDate:
+          type: string
+          format: date-time
+        PercentComplete:
+          type: number
+          format: double
+
+    Activity:
+      type: object
+      description: A project schedule activity
+      properties:
+        ObjectId:
+          type: integer
+        Id:
+          type: string
+        Name:
+          type: string
+        ProjectObjectId:
+          type: integer
+        WBSObjectId:
+          type: integer
+        Type:
+          type: string
+          enum: [Task Dependent, Resource Dependent, Level of Effort, Start Milestone, Finish Milestone, WBS Summary]
+        Status:
+          type: string
+          enum: [Not Started, In Progress, Completed]
+        PercentComplete:
+          type: number
+          format: double
+        PercentCompleteType:
+          type: string
+          enum: [Physical, Duration, Units]
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
+        ActualStartDate:
+          type: string
+          format: date-time
+          nullable: true
+        ActualFinishDate:
+          type: string
+          format: date-time
+          nullable: true
+        RemainingStartDate:
+          type: string
+          format: date-time
+          nullable: true
+        RemainingFinishDate:
+          type: string
+          format: date-time
+          nullable: true
+        PlannedDuration:
+          type: number
+          format: double
+          description: Planned duration in hours
+        ActualDuration:
+          type: number
+          format: double
+        RemainingDuration:
+          type: number
+          format: double
+        TotalFloat:
+          type: number
+          format: double
+          description: Total float in hours; negative indicates critical path
+        FreeFloat:
+          type: number
+          format: double
+        CriticalFlag:
+          type: boolean
+        CalendarObjectId:
+          type: integer
+
+    ActivityCreate:
+      type: object
+      required:
+        - Name
+        - Id
+        - ProjectObjectId
+        - WBSObjectId
+      properties:
+        Id:
+          type: string
+        Name:
+          type: string
+        ProjectObjectId:
+          type: integer
+        WBSObjectId:
+          type: integer
+        Type:
+          type: string
+          enum: [Task Dependent, Resource Dependent, Level of Effort, Start Milestone, Finish Milestone]
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
+
+    ActivityUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        PercentComplete:
+          type: number
+          format: double
+        ActualStartDate:
+          type: string
+          format: date-time
+        ActualFinishDate:
+          type: string
+          format: date-time
+        RemainingDuration:
+          type: number
+          format: double
+
+    WBSElement:
+      type: object
+      description: A Work Breakdown Structure element
+      properties:
+        ObjectId:
+          type: integer
+        Code:
+          type: string
+        Name:
+          type: string
+        ProjectObjectId:
+          type: integer
+        ParentObjectId:
+          type: integer
+          nullable: true
+        SequenceNumber:
+          type: integer
+        StatusCode:
+          type: string
+          enum: [Active, Inactive]
+        OBSObjectId:
+          type: integer
+
+    Resource:
+      type: object
+      description: A P6 resource (labor, non-labor, or material)
+      properties:
+        ObjectId:
+          type: integer
+        Id:
+          type: string
+        Name:
+          type: string
+        ResourceType:
+          type: string
+          enum: [Labor, Nonlabor, Material]
+        UnitOfMeasure:
+          type: string
+        DefaultUnitsPerTime:
+          type: number
+          format: double
+        PricePerUnit:
+          type: number
+          format: double
+        CalendarObjectId:
+          type: integer
+        EmailAddress:
+          type: string
+        OfficePhone:
+          type: string
+        ParentObjectId:
+          type: integer
+          nullable: true
+
+    ResourceAssignment:
+      type: object
+      description: An assignment of a resource to an activity
+      properties:
+        ObjectId:
+          type: integer
+        ActivityObjectId:
+          type: integer
+        ResourceObjectId:
+          type: integer
+        PlannedUnits:
+          type: number
+          format: double
+        ActualUnits:
+          type: number
+          format: double
+        RemainingUnits:
+          type: number
+          format: double
+        PlannedCost:
+          type: number
+          format: double
+        ActualCost:
+          type: number
+          format: double
+        RemainingCost:
+          type: number
+          format: double
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
+        ActualStartDate:
+          type: string
+          format: date-time
+          nullable: true
+        ActualFinishDate:
+          type: string
+          format: date-time
+          nullable: true
+        RateSource:
+          type: string
+          enum: [Resource, Override, Role]
+
+    Baseline:
+      type: object
+      description: A project baseline snapshot
+      properties:
+        ObjectId:
+          type: integer
+        Name:
+          type: string
+        ProjectObjectId:
+          type: integer
+        BaselineType:
+          type: string
+          enum: [Initial Planning Baseline, Mid-Project Baseline, Current Budget, Last Approved Budget]
+        LastUpdateDate:
+          type: string
+          format: date-time
+
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string

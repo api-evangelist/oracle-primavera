@@ -19,6 +19,8 @@ apis:
     type: Reference
   - url: https://docs.oracle.com/cd/E64687_01/EPPM/EPPM_CFO.html
     type: ChangeLog
+  - url: openapi/oracle-primavera-p6-eppm-openapi.yml
+    type: OpenAPI
   description: >-
     Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments. Documentation covers version 6.2.1 through version 26 (2026).
 - aid: oracle-primavera:oracle-primavera-gateway-api
@@ -81,6 +83,14 @@ common:
   type: ChangeLog
 - url: https://mylearn.oracle.com/construction
   type: GettingStarted
+- url: openapi/oracle-primavera-p6-eppm-openapi.yml
+  type: OpenAPI
+- url: json-schema/oracle-primavera-project-schema.json
+  type: JSONSchema
+- url: json-schema/oracle-primavera-activity-schema.json
+  type: JSONSchema
+- url: json-ld/oracle-primavera-context.jsonld
+  type: JSONLDContext
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
