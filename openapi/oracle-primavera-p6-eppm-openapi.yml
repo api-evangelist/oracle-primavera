@@ -26,23 +26,18 @@ security:
   - oauth2: []
 
 tags:
-  - name: Projects
-    description: Project management operations
   - name: Activities
     description: Activity scheduling and management
-  - name: WBS
-    description: Work Breakdown Structure management
-  - name: Resources
-    description: Resource and role management
-  - name: ResourceAssignments
-    description: Resource assignment operations
-  - name: Calendars
-    description: Calendar management
   - name: Baselines
     description: Project baseline operations
-  - name: Portfolios
-    description: Portfolio management
-
+  - name: Projects
+    description: Project management operations
+  - name: ResourceAssignments
+    description: Resource assignment operations
+  - name: Resources
+    description: Resource and role management
+  - name: WBS
+    description: Work Breakdown Structure management
 paths:
   /projects:
     get:
