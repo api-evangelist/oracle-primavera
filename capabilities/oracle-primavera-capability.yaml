@@ -1,0 +1,634 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Oracle Primavera P6 EPPM REST API
+  description: Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data
+    including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards.
+    Available for both cloud and on-premises deployments.
+  tags:
+  - Oracle
+  - Primavera
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: oracle-primavera
+    baseUri: https://primavera.example.com/p6ws/rest/v1
+    description: Oracle Primavera P6 EPPM REST API HTTP API.
+    authentication:
+      type: basic
+      username: '{{ORACLE_PRIMAVERA_USERNAME}}'
+      password: '{{ORACLE_PRIMAVERA_PASSWORD}}'
+    resources:
+    - name: projects
+      path: /projects
+      operations:
+      - name: listprojects
+        method: GET
+        description: List projects
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to return
+        - name: Filter
+          in: query
+          type: string
+          description: RSQL filter expression
+        - name: OrderBy
+          in: query
+          type: string
+          description: Field to sort by
+        - name: offset
+          in: query
+          type: integer
+          description: Pagination offset
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum records to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createproject
+        method: POST
+        description: Create a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-objectid
+      path: /projects/{objectId}
+      operations:
+      - name: getproject
+        method: GET
+        description: Get a project
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateproject
+        method: PUT
+        description: Update a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteproject
+        method: DELETE
+        description: Delete a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: activities
+      path: /activities
+      operations:
+      - name: listactivities
+        method: GET
+        description: List activities
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+        - name: Filter
+          in: query
+          type: string
+          description: Filter by project or WBS; e.g. ProjectObjectId eq 12345
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createactivity
+        method: POST
+        description: Create an activity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: activities-objectid
+      path: /activities/{objectId}
+      operations:
+      - name: getactivity
+        method: GET
+        description: Get an activity
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateactivity
+        method: PUT
+        description: Update an activity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wbss
+      path: /wbss
+      operations:
+      - name: listwbs
+        method: GET
+        description: List WBS elements
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+        - name: Filter
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: resources
+      path: /resources
+      operations:
+      - name: listresources
+        method: GET
+        description: List resources
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+        - name: Filter
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: resourceassignments
+      path: /resourceassignments
+      operations:
+      - name: listresourceassignments
+        method: GET
+        description: List resource assignments
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+        - name: Filter
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: baselines
+      path: /baselines
+      operations:
+      - name: listbaselines
+        method: GET
+        description: List baselines
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+        - name: Filter
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: oracle-primavera-rest
+    description: REST adapter for Oracle Primavera P6 EPPM REST API.
+    resources:
+    - path: /projects
+      name: listprojects
+      operations:
+      - method: GET
+        name: listprojects
+        description: List projects
+        call: oracle-primavera.listprojects
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects
+      name: createproject
+      operations:
+      - method: POST
+        name: createproject
+        description: Create a project
+        call: oracle-primavera.createproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{objectId}
+      name: getproject
+      operations:
+      - method: GET
+        name: getproject
+        description: Get a project
+        call: oracle-primavera.getproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{objectId}
+      name: updateproject
+      operations:
+      - method: PUT
+        name: updateproject
+        description: Update a project
+        call: oracle-primavera.updateproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{objectId}
+      name: deleteproject
+      operations:
+      - method: DELETE
+        name: deleteproject
+        description: Delete a project
+        call: oracle-primavera.deleteproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /activities
+      name: listactivities
+      operations:
+      - method: GET
+        name: listactivities
+        description: List activities
+        call: oracle-primavera.listactivities
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /activities
+      name: createactivity
+      operations:
+      - method: POST
+        name: createactivity
+        description: Create an activity
+        call: oracle-primavera.createactivity
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /activities/{objectId}
+      name: getactivity
+      operations:
+      - method: GET
+        name: getactivity
+        description: Get an activity
+        call: oracle-primavera.getactivity
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /activities/{objectId}
+      name: updateactivity
+      operations:
+      - method: PUT
+        name: updateactivity
+        description: Update an activity
+        call: oracle-primavera.updateactivity
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wbss
+      name: listwbs
+      operations:
+      - method: GET
+        name: listwbs
+        description: List WBS elements
+        call: oracle-primavera.listwbs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /resources
+      name: listresources
+      operations:
+      - method: GET
+        name: listresources
+        description: List resources
+        call: oracle-primavera.listresources
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /resourceassignments
+      name: listresourceassignments
+      operations:
+      - method: GET
+        name: listresourceassignments
+        description: List resource assignments
+        call: oracle-primavera.listresourceassignments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /baselines
+      name: listbaselines
+      operations:
+      - method: GET
+        name: listbaselines
+        description: List baselines
+        call: oracle-primavera.listbaselines
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: oracle-primavera-mcp
+    transport: http
+    description: MCP adapter for Oracle Primavera P6 EPPM REST API for AI agent use.
+    tools:
+    - name: listprojects
+      description: List projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.listprojects
+      with:
+        Fields: tools.Fields
+        Filter: tools.Filter
+        OrderBy: tools.OrderBy
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: Fields
+        type: string
+        description: Comma-separated list of fields to return
+      - name: Filter
+        type: string
+        description: RSQL filter expression
+      - name: OrderBy
+        type: string
+        description: Field to sort by
+      - name: offset
+        type: integer
+        description: Pagination offset
+      - name: limit
+        type: integer
+        description: Maximum records to return
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createproject
+      description: Create a project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oracle-primavera.createproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getproject
+      description: Get a project
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.getproject
+      with:
+        Fields: tools.Fields
+      inputParameters:
+      - name: Fields
+        type: string
+        description: Comma-separated list of fields to return
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateproject
+      description: Update a project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.updateproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteproject
+      description: Delete a project
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: oracle-primavera.deleteproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listactivities
+      description: List activities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.listactivities
+      with:
+        Fields: tools.Fields
+        Filter: tools.Filter
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: Fields
+        type: string
+        description: Fields
+      - name: Filter
+        type: string
+        description: Filter by project or WBS; e.g. ProjectObjectId eq 12345
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createactivity
+      description: Create an activity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oracle-primavera.createactivity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getactivity
+      description: Get an activity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.getactivity
+      with:
+        Fields: tools.Fields
+      inputParameters:
+      - name: Fields
+        type: string
+        description: Fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateactivity
+      description: Update an activity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.updateactivity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listwbs
+      description: List WBS elements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.listwbs
+      with:
+        Fields: tools.Fields
+        Filter: tools.Filter
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: Fields
+        type: string
+        description: Fields
+      - name: Filter
+        type: string
+        description: Filter
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listresources
+      description: List resources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.listresources
+      with:
+        Fields: tools.Fields
+        Filter: tools.Filter
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: Fields
+        type: string
+        description: Fields
+      - name: Filter
+        type: string
+        description: Filter
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listresourceassignments
+      description: List resource assignments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.listresourceassignments
+      with:
+        Fields: tools.Fields
+        Filter: tools.Filter
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: Fields
+        type: string
+        description: Fields
+      - name: Filter
+        type: string
+        description: Filter
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listbaselines
+      description: List baselines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oracle-primavera.listbaselines
+      with:
+        Fields: tools.Fields
+        Filter: tools.Filter
+      inputParameters:
+      - name: Fields
+        type: string
+        description: Fields
+      - name: Filter
+        type: string
+        description: Filter
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    ORACLE_PRIMAVERA_USERNAME: ORACLE_PRIMAVERA_USERNAME
+    ORACLE_PRIMAVERA_PASSWORD: ORACLE_PRIMAVERA_PASSWORD
