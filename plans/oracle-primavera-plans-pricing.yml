@@ -4,151 +4,133 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Oracle Primavera
 providerId: oracle-primavera
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Construction
   - Engineering
+  - Oracle Cloud
   - Project Management
   - Scheduling
-  - Portfolio Management
-  - Oracle
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: >-
+  Oracle Primavera is sold across two principal commercial paths. Oracle
+  Primavera Cloud (project planning, scheduling, portfolio, risk) is a SaaS
+  subscription billed per Hosted Named User per month, with separate role
+  metrics for read-only viewers and integration users. Oracle Primavera P6
+  EPPM is also available on-premises licensed per processor or per
+  named-user-plus on the Oracle Technology Global Price List, with separate
+  Primavera Gateway and Analytics SKUs. There is no free or per-API public
+  tier; the Primavera REST APIs (P6 EPPM, Gateway, Analytics, Scheduling) are
+  included with any active subscription. Engage Oracle Sales for the
+  per-user rate.
+sources:
+  - https://www.oracle.com/construction-engineering/primavera/
+  - https://docs.oracle.com/cd/F37125_01/
+  - https://www.oracle.com/cloud/price-list/
+notes: >-
+  Oracle blocks programmatic fetches of www.oracle.com pricing pages (HTTP 403).
+  Plan structure preserved as a Primavera Cloud SaaS plan plus a P6 EPPM
+  on-premises plan and an enterprise tier; replace per-user list price with
+  the verified Oracle Cloud Applications / Technology price list value when
+  available.
 plans:
-  - id: oracle-primavera-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Oracle Primavera API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: oracle-primavera-cloud
+    name: Oracle Primavera Cloud
+    type: subscription
+    description: >-
+      SaaS subscription to Oracle Primavera Cloud for project planning,
+      scheduling, portfolio, and risk management. Billed per Hosted Named
+      User per month with role-based metrics for full-use, viewer, and
+      integration users.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Hosted Named User (Full Use)
+        name: hosted_named_user_full
+        type: subscription
+        metric: user
+        limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://{host}/p6ws/rest/v1
         unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://{host}/p6ws/rest/v1
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Oracle Primavera P6 EPPM REST API
-      - name: Oracle Primavera Gateway Integration API
-      - name: Oracle Primavera Analytics API
-      - name: Oracle Primavera P6 Scheduling API
-  - id: oracle-primavera-pro
-    name: Professional
-    type: paid
-    description: Production tier for Oracle Primavera. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
+        price: contact sales
+        userMultiplied: true
+      - label: Hosted Named User (Viewer)
+        name: hosted_named_user_viewer
+        type: subscription
+        metric: user
+        limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://{host}/p6ws/rest/v1
         unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://{host}/p6ws/rest/v1
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
+        price: contact sales
+        userMultiplied: true
+      - label: REST API Calls (included)
+        name: rest_api_calls
+        type: quota
         metric: requests
         limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://{host}/p6ws/rest/v1
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: '0.00'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
+      - name: Oracle Primavera P6 EPPM REST API
+      - name: Oracle Primavera Gateway Integration API
+      - name: Oracle Primavera Analytics API
+      - name: Oracle Primavera P6 Scheduling API
+  - id: oracle-primavera-p6-on-premises
+    name: Primavera P6 EPPM (On-Premises)
+    type: subscription
+    description: >-
+      On-premises Oracle Primavera P6 Enterprise Project Portfolio
+      Management, licensed per processor or per named-user-plus on the
+      Oracle Technology Global Price List, with separately purchased
+      Primavera Gateway, Analytics, and annual support.
+    entries:
+      - label: Per-Processor License
+        name: per_processor_license
+        type: subscription
+        metric: processor
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+      - label: Named User Plus License
+        name: named_user_plus
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: true
+    elements:
       - name: Oracle Primavera P6 EPPM REST API
       - name: Oracle Primavera Gateway Integration API
       - name: Oracle Primavera Analytics API
       - name: Oracle Primavera P6 Scheduling API
   - id: oracle-primavera-enterprise
-    name: Enterprise
+    name: Enterprise Agreement
     type: enterprise
-    description: Custom-negotiated tier for Oracle Primavera. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
+    description: >-
+      Negotiated enterprise agreement combining Primavera Cloud and on-premises
+      P6 entitlements, with contractual SLAs, premier support, and named
+      technical account management.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Negotiated User Volume
+        name: negotiated_users
+        type: subscription
+        metric: user
         limit: -1
-        timeFrame: month
+        timeFrame: year
         geo: configurable
-        domains:
-          - https://{host}/p6ws/rest/v1
         unit: 1
         price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://{host}/p6ws/rest/v1
-        unit: 1
-        price: custom
-        userMultiplied: false
+        userMultiplied: true
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
       - name: Oracle Primavera P6 EPPM REST API
       - name: Oracle Primavera Gateway Integration API
       - name: Oracle Primavera Analytics API
