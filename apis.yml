@@ -45,7 +45,7 @@ apis:
         url: https://docs.oracle.com/en/industries/construction-engineering/primavera-p6-project/index.html
       - type: Reference
         url: https://docs.oracle.com/cd/G48897_01/index.htm
-      - type: Change Log
+      - type: ChangeLog
         url: https://docs.oracle.com/cd/E64687_01/EPPM/EPPM_CFO.html
       - type: OpenAPI
         url: openapi/oracle-primavera-p6-eppm-openapi.yml
@@ -109,17 +109,17 @@ common:
     url: https://docs.oracle.com/en/industries/construction-engineering/primavera-p6-project/index.html
   - type: Reference
     url: https://docs.oracle.com/cd/G48897_01/index.htm
-  - type: Change Log
+  - type: ChangeLog
     url: https://docs.oracle.com/cd/E64687_01/EPPM/EPPM_CFO.html
-  - type: Getting Started
+  - type: GettingStarted
     url: https://mylearn.oracle.com/construction
   - type: Support
     url: https://www.oracle.com/support/
-  - type: Status
+  - type: StatusPage
     url: https://ocistatus.oraclecloud.com/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.oracle.com/legal/privacy/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.oracle.com/legal/terms.html
   - type: OpenAPI
     url: openapi/oracle-primavera-p6-eppm-openapi.yml
