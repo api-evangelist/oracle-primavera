@@ -1,0 +1,83 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Oracle Primavera P6 EPPM REST API — Baselines
+  description: 'Oracle Primavera P6 EPPM REST API — Baselines. 1 operations. Lead operation: List baselines. Self-contained
+    Naftiko capability covering one Oracle Primavera business surface.'
+  tags:
+  - Oracle Primavera
+  - Baselines
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ORACLE_PRIMAVERA_API_KEY: ORACLE_PRIMAVERA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: p6-eppm-baselines
+    baseUri: https://{host}/p6ws/rest/v1
+    description: Oracle Primavera P6 EPPM REST API — Baselines business capability. Self-contained, no shared references.
+    resources:
+    - name: baselines
+      path: /baselines
+      operations:
+      - name: listbaselines
+        method: GET
+        description: List baselines
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+        - name: Filter
+          in: query
+          type: string
+    authentication:
+      type: bearer
+      token: '{{env.ORACLE_PRIMAVERA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: p6-eppm-baselines-rest
+    port: 8080
+    description: REST adapter for Oracle Primavera P6 EPPM REST API — Baselines. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/baselines
+      name: baselines
+      description: REST surface for baselines.
+      operations:
+      - method: GET
+        name: listbaselines
+        description: List baselines
+        call: p6-eppm-baselines.listbaselines
+        with:
+          Fields: rest.Fields
+          Filter: rest.Filter
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: p6-eppm-baselines-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Oracle Primavera P6 EPPM REST API — Baselines. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-baselines
+      description: List baselines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: p6-eppm-baselines.listbaselines
+      with:
+        Fields: tools.Fields
+        Filter: tools.Filter
+      outputParameters:
+      - type: object
+        mapping: $.

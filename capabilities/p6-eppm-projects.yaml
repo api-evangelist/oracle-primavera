@@ -1,0 +1,239 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Oracle Primavera P6 EPPM REST API — Projects
+  description: 'Oracle Primavera P6 EPPM REST API — Projects. 5 operations. Lead operation: List projects. Self-contained
+    Naftiko capability covering one Oracle Primavera business surface.'
+  tags:
+  - Oracle Primavera
+  - Projects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ORACLE_PRIMAVERA_API_KEY: ORACLE_PRIMAVERA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: p6-eppm-projects
+    baseUri: https://{host}/p6ws/rest/v1
+    description: Oracle Primavera P6 EPPM REST API — Projects business capability. Self-contained, no shared references.
+    resources:
+    - name: projects
+      path: /projects
+      operations:
+      - name: listprojects
+        method: GET
+        description: List projects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to return
+        - name: Filter
+          in: query
+          type: string
+          description: RSQL filter expression
+        - name: OrderBy
+          in: query
+          type: string
+          description: Field to sort by
+        - name: offset
+          in: query
+          type: integer
+          description: Pagination offset
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum records to return
+      - name: createproject
+        method: POST
+        description: Create a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-objectId
+      path: /projects/{objectId}
+      operations:
+      - name: getproject
+        method: GET
+        description: Get a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to return
+      - name: updateproject
+        method: PUT
+        description: Update a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteproject
+        method: DELETE
+        description: Delete a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ORACLE_PRIMAVERA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: p6-eppm-projects-rest
+    port: 8080
+    description: REST adapter for Oracle Primavera P6 EPPM REST API — Projects. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/projects
+      name: projects
+      description: REST surface for projects.
+      operations:
+      - method: GET
+        name: listprojects
+        description: List projects
+        call: p6-eppm-projects.listprojects
+        with:
+          Fields: rest.Fields
+          Filter: rest.Filter
+          OrderBy: rest.OrderBy
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createproject
+        description: Create a project
+        call: p6-eppm-projects.createproject
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{objectid}
+      name: projects-objectid
+      description: REST surface for projects-objectId.
+      operations:
+      - method: GET
+        name: getproject
+        description: Get a project
+        call: p6-eppm-projects.getproject
+        with:
+          Fields: rest.Fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateproject
+        description: Update a project
+        call: p6-eppm-projects.updateproject
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteproject
+        description: Delete a project
+        call: p6-eppm-projects.deleteproject
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: p6-eppm-projects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Oracle Primavera P6 EPPM REST API — Projects. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-projects
+      description: List projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: p6-eppm-projects.listprojects
+      with:
+        Fields: tools.Fields
+        Filter: tools.Filter
+        OrderBy: tools.OrderBy
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-project
+      description: Create a project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: p6-eppm-projects.createproject
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-project
+      description: Get a project
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: p6-eppm-projects.getproject
+      with:
+        Fields: tools.Fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-project
+      description: Update a project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: p6-eppm-projects.updateproject
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project
+      description: Delete a project
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: p6-eppm-projects.deleteproject
+      outputParameters:
+      - type: object
+        mapping: $.
