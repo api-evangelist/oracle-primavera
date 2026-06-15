@@ -1,9 +1,10 @@
 aid: oracle-primavera
 name: Oracle Primavera
-description: Oracle Primavera is a portfolio of project portfolio management (PPM) applications for construction, engineering,
-  and capital project industries. Primavera APIs provide programmatic access to enterprise project portfolio management data
-  including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards across
-  cloud and on-premises deployments.
+description: >-
+  Oracle Primavera is a portfolio of project portfolio management (PPM) applications for construction, engineering, and
+  capital project industries. Primavera APIs provide programmatic access to enterprise project portfolio management data
+  including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards
+  across cloud and on-premises deployments.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -21,83 +22,76 @@ tags:
   - Oracle
 apis:
   - name: Oracle Primavera P6 EPPM REST API
-    description: Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data
-      including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards.
-      Available for both cloud and on-premises deployments. Documentation covers version 6.2.1 through version 26 (2026).
+    description: >-
+      Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data
+      including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio
+      dashboards. Available for both cloud and on-premises deployments. Documentation covers version 6.2.1 through
+      version 26 (2026).
     image: https://www.oracle.com/a/ocom/img/social-og-oracle-cloud.jpg
     humanURL: https://docs.oracle.com/en/industries/construction-engineering/primavera-p6-project/index.html
     baseURL: https://{host}/p6ws/rest/v1
     tags:
-    - Construction
-    - EPPM
-    - Project Management
-    - REST
-    - Scheduling
+      - Construction
+      - EPPM
+      - Project Management
+      - REST
+      - Scheduling
     properties:
-    - type: Documentation
-      url: https://docs.oracle.com/en/industries/construction-engineering/primavera-p6-project/index.html
-    - type: Reference
-      url: https://docs.oracle.com/cd/G48897_01/index.htm
-    - type: ChangeLog
-      url: https://docs.oracle.com/cd/E64687_01/EPPM/EPPM_CFO.html
-    - type: OpenAPI
-      url: openapi/oracle-primavera-p6-eppm-openapi.yml
-    - type: NaftikoCapability
-      url: capabilities/p6-eppm-activities.yaml
-    - type: NaftikoCapability
-      url: capabilities/p6-eppm-baselines.yaml
-    - type: NaftikoCapability
-      url: capabilities/p6-eppm-projects.yaml
-    - type: NaftikoCapability
-      url: capabilities/p6-eppm-resourceassignments.yaml
-    - type: NaftikoCapability
-      url: capabilities/p6-eppm-resources.yaml
-    - type: NaftikoCapability
-      url: capabilities/p6-eppm-wbs.yaml
+      - type: Documentation
+        url: https://docs.oracle.com/en/industries/construction-engineering/primavera-p6-project/index.html
+      - type: Reference
+        url: https://docs.oracle.com/cd/G48897_01/index.htm
+      - type: ChangeLog
+        url: https://docs.oracle.com/cd/E64687_01/EPPM/EPPM_CFO.html
+      - type: OpenAPI
+        url: openapi/oracle-primavera-p6-eppm-openapi.yml
   - name: Oracle Primavera Gateway Integration API
-    description: Oracle Primavera Gateway provides integration APIs for connecting Primavera P6 with other Oracle and third-party
-      applications. Enables bi-directional data exchange for projects, resources, cost accounts, and activity data between P6
-      EPPM and ERP, asset management, and financial systems.
+    description: >-
+      Oracle Primavera Gateway provides integration APIs for connecting Primavera P6 with other Oracle and third-party
+      applications. Enables bi-directional data exchange for projects, resources, cost accounts, and activity data
+      between P6 EPPM and ERP, asset management, and financial systems.
     image: https://www.oracle.com/a/ocom/img/social-og-oracle-cloud.jpg
     humanURL: https://docs.oracle.com/en/industries/construction-engineering/primavera-gateway/index.html
     tags:
-    - Construction
-    - Integration
-    - Project Management
-    - Scheduling
-    - XML
+      - Construction
+      - Integration
+      - Project Management
+      - Scheduling
+      - XML
     properties:
-    - type: Documentation
-      url: https://docs.oracle.com/en/industries/construction-engineering/primavera-gateway/index.html
+      - type: Documentation
+        url: https://docs.oracle.com/en/industries/construction-engineering/primavera-gateway/index.html
   - name: Oracle Primavera Analytics API
-    description: Oracle Primavera Analytics provides reporting and business intelligence APIs for portfolio performance insights,
-      project health dashboards, resource utilization analysis, and earned value management reporting across construction and
-      engineering portfolios.
+    description: >-
+      Oracle Primavera Analytics provides reporting and business intelligence APIs for portfolio performance insights,
+      project health dashboards, resource utilization analysis, and earned value management reporting across
+      construction and engineering portfolios.
     image: https://www.oracle.com/a/ocom/img/social-og-oracle-cloud.jpg
     humanURL: https://docs.oracle.com/en/industries/construction-engineering/primavera-analytics/index.html
     tags:
-    - Analytics
-    - Construction
-    - Project Management
-    - Reporting
-    - Scheduling
+      - Analytics
+      - Construction
+      - Project Management
+      - Reporting
+      - Scheduling
     properties:
-    - type: Documentation
-      url: https://docs.oracle.com/en/industries/construction-engineering/primavera-analytics/index.html
+      - type: Documentation
+        url: https://docs.oracle.com/en/industries/construction-engineering/primavera-analytics/index.html
   - name: Oracle Primavera P6 Scheduling API
-    description: Oracle Primavera P6 provides project scheduling and portfolio management APIs for construction, engineering,
-      and capital projects. REST and XML APIs enable access to WBS structures, activity schedules, resource assignments, and
+    description: >-
+      Oracle Primavera P6 provides project scheduling and portfolio management APIs for construction, engineering, and
+      capital projects. REST and XML APIs enable access to WBS structures, activity schedules, resource assignments, and
       critical path analysis.
     image: https://www.oracle.com/a/ocom/img/social-og-oracle-cloud.jpg
     humanURL: https://docs.oracle.com/en/industries/construction-engineering/primavera/
     tags:
-    - Construction
-    - Project Management
-    - Scheduling
-    - XML
+      - Construction
+      - Project Management
+      - Scheduling
+      - XML
     properties:
-    - type: Documentation
-      url: https://docs.oracle.com/en/industries/construction-engineering/primavera/
+      - type: Documentation
+        url: https://docs.oracle.com/en/industries/construction-engineering/primavera/
 common:
   - type: GitHubOrganization
     url: https://github.com/oracle
