@@ -117,11 +117,11 @@ common:
     url: https://www.oracle.com/legal/terms.html
   - type: OpenAPI
     url: openapi/oracle-primavera-p6-eppm-openapi.yml
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/oracle-primavera-project-schema.json
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/oracle-primavera-activity-schema.json
-  - type: JSON-LD Context
+  - type: JSONLDContext
     url: json-ld/oracle-primavera-context.jsonld
 maintainers:
   - FN: Kin Lane
