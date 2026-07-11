@@ -93,6 +93,8 @@ apis:
       - type: Documentation
         url: https://docs.oracle.com/en/industries/construction-engineering/primavera/
 common:
+  - type: OAuthScopes
+    url: scopes/oracle-primavera-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/oracle
   - type: Portal
