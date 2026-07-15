@@ -93,6 +93,8 @@ apis:
       - type: Documentation
         url: https://docs.oracle.com/en/industries/construction-engineering/primavera/
 common:
+  - type: AgenticAccess
+    url: agentic-access/oracle-primavera-agentic-access.yml
   - type: DomainSecurity
     url: security/oracle-primavera-domain-security.yml
   - type: Authentication
