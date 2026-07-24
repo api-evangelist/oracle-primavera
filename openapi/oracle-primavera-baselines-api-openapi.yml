@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Oracle Primavera P6 EPPM REST Activities Baselines API
+  description: Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.
+  version: 26.0.0
+  contact:
+    name: Oracle Support
+    url: https://support.oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/legal/terms/
+servers:
+- url: https://{host}/p6ws/rest/v1
+  description: P6 EPPM REST API
+  variables:
+    host:
+      default: primavera.example.com
+      description: P6 EPPM server hostname
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Baselines
+  description: Project baseline operations
+paths:
+  /baselines:
+    get:
+      operationId: listBaselines
+      summary: List baselines
+      description: Returns project baselines including planned dates and costs.
+      tags:
+      - Baselines
+      parameters:
+      - name: Fields
+        in: query
+        schema:
+          type: string
+          example: ObjectId,Name,ProjectObjectId,BaselineType,LastUpdateDate
+      - name: Filter
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of baselines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Baseline'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
+    Baseline:
+      type: object
+      description: A project baseline snapshot
+      properties:
+        ObjectId:
+          type: integer
+        Name:
+          type: string
+        ProjectObjectId:
+          type: integer
+        BaselineType:
+          type: string
+          enum:
+          - Initial Planning Baseline
+          - Mid-Project Baseline
+          - Current Budget
+          - Last Approved Budget
+        LastUpdateDate:
+          type: string
+          format: date-time
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication with P6 username and password
+    oauth2:
+      type: oauth2
+      description: Oracle Identity Cloud Service OAuth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://identity.oraclecloud.com/oauth2/v1/authorize
+          tokenUrl: https://identity.oraclecloud.com/oauth2/v1/token
+          scopes:
+            read: Read access to P6 data
+            write: Write access to P6 data

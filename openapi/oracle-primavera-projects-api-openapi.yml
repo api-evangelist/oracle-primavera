@@ -1,0 +1,335 @@
+openapi: 3.1.0
+info:
+  title: Oracle Primavera P6 EPPM REST Activities Projects API
+  description: Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.
+  version: 26.0.0
+  contact:
+    name: Oracle Support
+    url: https://support.oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/legal/terms/
+servers:
+- url: https://{host}/p6ws/rest/v1
+  description: P6 EPPM REST API
+  variables:
+    host:
+      default: primavera.example.com
+      description: P6 EPPM server hostname
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Projects
+  description: Project management operations
+paths:
+  /projects:
+    get:
+      operationId: listProjects
+      summary: List projects
+      description: Returns a collection of projects accessible to the authenticated user, with optional field filtering.
+      tags:
+      - Projects
+      parameters:
+      - name: Fields
+        in: query
+        description: Comma-separated list of fields to return
+        schema:
+          type: string
+          example: ObjectId,Id,Name,Status,StartDate,FinishDate
+      - name: Filter
+        in: query
+        description: RSQL filter expression
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        description: Field to sort by
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Pagination offset
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum records to return
+        schema:
+          type: integer
+          default: 100
+          maximum: 1000
+      responses:
+        '200':
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      operationId: createProject
+      summary: Create a project
+      description: Creates a new project in the P6 EPPM system.
+      tags:
+      - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreate'
+      responses:
+        '200':
+          description: Created project object IDs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    ObjectId:
+                      type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /projects/{objectId}:
+    get:
+      operationId: getProject
+      summary: Get a project
+      description: Returns a single project by its ObjectId.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/ObjectId'
+      - name: Fields
+        in: query
+        description: Comma-separated list of fields to return
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Project details
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateProject
+      summary: Update a project
+      description: Updates fields on an existing project.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUpdate'
+      responses:
+        '200':
+          description: Update confirmation
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteProject
+      summary: Delete a project
+      description: Permanently deletes a project and all its child objects.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/ObjectId'
+      responses:
+        '200':
+          description: Delete confirmation
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    ProjectUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        Name:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          - What-if
+          - Planned
+        DataDate:
+          type: string
+          format: date-time
+        PercentComplete:
+          type: number
+          format: double
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
+    Project:
+      type: object
+      description: An Oracle Primavera P6 project
+      properties:
+        ObjectId:
+          type: integer
+          description: Unique system-generated identifier
+        Id:
+          type: string
+          description: User-defined project ID (up to 40 chars)
+        Name:
+          type: string
+          description: Project name
+        Status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          - What-if
+          - Planned
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
+        ActualStartDate:
+          type: string
+          format: date-time
+          nullable: true
+        ActualFinishDate:
+          type: string
+          format: date-time
+          nullable: true
+        DataDate:
+          type: string
+          format: date-time
+        PercentComplete:
+          type: number
+          format: double
+          minimum: 0
+          maximum: 100
+        TotalBudgetCost:
+          type: number
+          format: double
+        EarnedValueCost:
+          type: number
+          format: double
+        PlannedTotalCost:
+          type: number
+          format: double
+        RiskLevel:
+          type: string
+          enum:
+          - Very High
+          - High
+          - Medium
+          - Low
+          - Very Low
+        WBSObjectId:
+          type: integer
+          description: Root WBS element ObjectId
+        OBSObjectId:
+          type: integer
+          description: Responsible OBS element
+        LastUpdateDate:
+          type: string
+          format: date-time
+        CreateDate:
+          type: string
+          format: date-time
+    ProjectCreate:
+      type: object
+      required:
+      - Name
+      - Id
+      - WBSObjectId
+      properties:
+        Id:
+          type: string
+        Name:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          - What-if
+          - Planned
+          default: Active
+        PlannedStartDate:
+          type: string
+          format: date-time
+        WBSObjectId:
+          type: integer
+  parameters:
+    ObjectId:
+      name: objectId
+      in: path
+      required: true
+      description: Unique numeric ObjectId
+      schema:
+        type: integer
+        format: int64
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication with P6 username and password
+    oauth2:
+      type: oauth2
+      description: Oracle Identity Cloud Service OAuth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://identity.oraclecloud.com/oauth2/v1/authorize
+          tokenUrl: https://identity.oraclecloud.com/oauth2/v1/token
+          scopes:
+            read: Read access to P6 data
+            write: Write access to P6 data

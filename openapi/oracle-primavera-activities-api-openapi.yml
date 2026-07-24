@@ -1,0 +1,313 @@
+openapi: 3.1.0
+info:
+  title: Oracle Primavera P6 EPPM REST Activities API
+  description: Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.
+  version: 26.0.0
+  contact:
+    name: Oracle Support
+    url: https://support.oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/legal/terms/
+servers:
+- url: https://{host}/p6ws/rest/v1
+  description: P6 EPPM REST API
+  variables:
+    host:
+      default: primavera.example.com
+      description: P6 EPPM server hostname
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Activities
+  description: Activity scheduling and management
+paths:
+  /activities:
+    get:
+      operationId: listActivities
+      summary: List activities
+      description: Returns activities with scheduling data including planned dates, durations, and relationships.
+      tags:
+      - Activities
+      parameters:
+      - name: Fields
+        in: query
+        schema:
+          type: string
+          example: ObjectId,Id,Name,PlannedStartDate,PlannedFinishDate,ActualStartDate,ActualFinishDate,Status,PercentComplete
+      - name: Filter
+        in: query
+        description: Filter by project or WBS; e.g. ProjectObjectId eq 12345
+        schema:
+          type: string
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: List of activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createActivity
+      summary: Create an activity
+      description: Creates a new activity within a project.
+      tags:
+      - Activities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityCreate'
+      responses:
+        '200':
+          description: Created activity ObjectId
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    ObjectId:
+                      type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /activities/{objectId}:
+    get:
+      operationId: getActivity
+      summary: Get an activity
+      description: Returns details for a single activity.
+      tags:
+      - Activities
+      parameters:
+      - $ref: '#/components/parameters/ObjectId'
+      - name: Fields
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Activity details
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateActivity
+      summary: Update an activity
+      description: Updates scheduling fields on an activity.
+      tags:
+      - Activities
+      parameters:
+      - $ref: '#/components/parameters/ObjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityUpdate'
+      responses:
+        '200':
+          description: Update confirmation
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Activity:
+      type: object
+      description: A project schedule activity
+      properties:
+        ObjectId:
+          type: integer
+        Id:
+          type: string
+        Name:
+          type: string
+        ProjectObjectId:
+          type: integer
+        WBSObjectId:
+          type: integer
+        Type:
+          type: string
+          enum:
+          - Task Dependent
+          - Resource Dependent
+          - Level of Effort
+          - Start Milestone
+          - Finish Milestone
+          - WBS Summary
+        Status:
+          type: string
+          enum:
+          - Not Started
+          - In Progress
+          - Completed
+        PercentComplete:
+          type: number
+          format: double
+        PercentCompleteType:
+          type: string
+          enum:
+          - Physical
+          - Duration
+          - Units
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
+        ActualStartDate:
+          type: string
+          format: date-time
+          nullable: true
+        ActualFinishDate:
+          type: string
+          format: date-time
+          nullable: true
+        RemainingStartDate:
+          type: string
+          format: date-time
+          nullable: true
+        RemainingFinishDate:
+          type: string
+          format: date-time
+          nullable: true
+        PlannedDuration:
+          type: number
+          format: double
+          description: Planned duration in hours
+        ActualDuration:
+          type: number
+          format: double
+        RemainingDuration:
+          type: number
+          format: double
+        TotalFloat:
+          type: number
+          format: double
+          description: Total float in hours; negative indicates critical path
+        FreeFloat:
+          type: number
+          format: double
+        CriticalFlag:
+          type: boolean
+        CalendarObjectId:
+          type: integer
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
+    ActivityCreate:
+      type: object
+      required:
+      - Name
+      - Id
+      - ProjectObjectId
+      - WBSObjectId
+      properties:
+        Id:
+          type: string
+        Name:
+          type: string
+        ProjectObjectId:
+          type: integer
+        WBSObjectId:
+          type: integer
+        Type:
+          type: string
+          enum:
+          - Task Dependent
+          - Resource Dependent
+          - Level of Effort
+          - Start Milestone
+          - Finish Milestone
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
+    ActivityUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        PercentComplete:
+          type: number
+          format: double
+        ActualStartDate:
+          type: string
+          format: date-time
+        ActualFinishDate:
+          type: string
+          format: date-time
+        RemainingDuration:
+          type: number
+          format: double
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ObjectId:
+      name: objectId
+      in: path
+      required: true
+      description: Unique numeric ObjectId
+      schema:
+        type: integer
+        format: int64
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication with P6 username and password
+    oauth2:
+      type: oauth2
+      description: Oracle Identity Cloud Service OAuth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://identity.oraclecloud.com/oauth2/v1/authorize
+          tokenUrl: https://identity.oraclecloud.com/oauth2/v1/token
+          scopes:
+            read: Read access to P6 data
+            write: Write access to P6 data

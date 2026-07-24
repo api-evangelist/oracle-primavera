@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: Oracle Primavera P6 EPPM REST Activities ResourceAssignments API
+  description: Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.
+  version: 26.0.0
+  contact:
+    name: Oracle Support
+    url: https://support.oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/legal/terms/
+servers:
+- url: https://{host}/p6ws/rest/v1
+  description: P6 EPPM REST API
+  variables:
+    host:
+      default: primavera.example.com
+      description: P6 EPPM server hostname
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: ResourceAssignments
+  description: Resource assignment operations
+paths:
+  /resourceassignments:
+    get:
+      operationId: listResourceAssignments
+      summary: List resource assignments
+      description: Returns resource-to-activity assignments with planned and actual units.
+      tags:
+      - ResourceAssignments
+      parameters:
+      - name: Fields
+        in: query
+        schema:
+          type: string
+          example: ObjectId,ActivityObjectId,ResourceObjectId,PlannedUnits,ActualUnits,PlannedCost,ActualCost
+      - name: Filter
+        in: query
+        schema:
+          type: string
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: List of resource assignments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceAssignment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    ResourceAssignment:
+      type: object
+      description: An assignment of a resource to an activity
+      properties:
+        ObjectId:
+          type: integer
+        ActivityObjectId:
+          type: integer
+        ResourceObjectId:
+          type: integer
+        PlannedUnits:
+          type: number
+          format: double
+        ActualUnits:
+          type: number
+          format: double
+        RemainingUnits:
+          type: number
+          format: double
+        PlannedCost:
+          type: number
+          format: double
+        ActualCost:
+          type: number
+          format: double
+        RemainingCost:
+          type: number
+          format: double
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
+        ActualStartDate:
+          type: string
+          format: date-time
+          nullable: true
+        ActualFinishDate:
+          type: string
+          format: date-time
+          nullable: true
+        RateSource:
+          type: string
+          enum:
+          - Resource
+          - Override
+          - Role
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication with P6 username and password
+    oauth2:
+      type: oauth2
+      description: Oracle Identity Cloud Service OAuth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://identity.oraclecloud.com/oauth2/v1/authorize
+          tokenUrl: https://identity.oraclecloud.com/oauth2/v1/token
+          scopes:
+            read: Read access to P6 data
+            write: Write access to P6 data
