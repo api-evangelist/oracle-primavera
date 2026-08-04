@@ -1,0 +1,217 @@
+{
+  "info": {
+    "_postman_id": "57c7641d-ea2e-42c4-a217-fdaa1c8789bf",
+    "name": "Oracle Primavera P6 EPPM REST Activities Resources API",
+    "description": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:28:13.000Z",
+    "updatedAt": "2026-07-28T02:28:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-57c7641d-ea2e-42c4-a217-fdaa1c8789bf"
+  },
+  "item": [
+    {
+      "name": "resources",
+      "item": [
+        {
+          "name": "List resources",
+          "id": "e152bea8-6a34-4386-ad7d-ef6757d29198",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resources?Fields=<string>&Filter=<string>&offset=0&limit=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "resources"
+              ],
+              "query": [
+                {
+                  "key": "Fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "Filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "100"
+                }
+              ]
+            },
+            "description": "Returns labor, non-labor, and material resources."
+          },
+          "response": [
+            {
+              "id": "5cb0bbae-d617-4143-8427-4305f2db4846",
+              "name": "List of resources",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/resources?Fields=<string>&Filter=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resources"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"ResourceType\": \"Nonlabor\",\n    \"UnitOfMeasure\": \"<string>\",\n    \"DefaultUnitsPerTime\": \"<double>\",\n    \"PricePerUnit\": \"<double>\",\n    \"CalendarObjectId\": \"<integer>\",\n    \"EmailAddress\": \"<string>\",\n    \"OfficePhone\": \"<string>\",\n    \"ParentObjectId\": \"<integer>\"\n  },\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"ResourceType\": \"Nonlabor\",\n    \"UnitOfMeasure\": \"<string>\",\n    \"DefaultUnitsPerTime\": \"<double>\",\n    \"PricePerUnit\": \"<double>\",\n    \"CalendarObjectId\": \"<integer>\",\n    \"EmailAddress\": \"<string>\",\n    \"OfficePhone\": \"<string>\",\n    \"ParentObjectId\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:28:14.000Z",
+              "updatedAt": "2026-07-28T02:28:14.000Z",
+              "uid": "35240-5cb0bbae-d617-4143-8427-4305f2db4846"
+            },
+            {
+              "id": "e930ebb2-4cf1-4167-8167-08f042c214de",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/resources?Fields=<string>&Filter=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resources"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:14.000Z",
+              "updatedAt": "2026-07-28T02:28:14.000Z",
+              "uid": "35240-e930ebb2-4cf1-4167-8167-08f042c214de"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:14.000Z",
+          "updatedAt": "2026-07-28T02:28:14.000Z",
+          "uid": "35240-e152bea8-6a34-4386-ad7d-ef6757d29198"
+        }
+      ],
+      "id": "68ead8a1-29cf-4cf6-b895-7883fb32181b",
+      "createdAt": "2026-07-28T02:28:14.000Z",
+      "updatedAt": "2026-07-28T02:28:14.000Z",
+      "uid": "35240-68ead8a1-29cf-4cf6-b895-7883fb32181b"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "primavera.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}/p6ws/rest/v1"
+    }
+  ]
+}

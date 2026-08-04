@@ -1,0 +1,217 @@
+{
+  "info": {
+    "_postman_id": "96aba694-33d5-4206-939c-bb260f0968b8",
+    "name": "Oracle Primavera P6 EPPM REST Activities ResourceAssignments API",
+    "description": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:28:09.000Z",
+    "updatedAt": "2026-07-28T02:28:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-96aba694-33d5-4206-939c-bb260f0968b8"
+  },
+  "item": [
+    {
+      "name": "resourceassignments",
+      "item": [
+        {
+          "name": "List resource assignments",
+          "id": "47b9a5d5-45ea-4185-9e90-5ab188ba6cc8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resourceassignments?Fields=<string>&Filter=<string>&offset=0&limit=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "resourceassignments"
+              ],
+              "query": [
+                {
+                  "key": "Fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "Filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "100"
+                }
+              ]
+            },
+            "description": "Returns resource-to-activity assignments with planned and actual units."
+          },
+          "response": [
+            {
+              "id": "21a873a3-69ec-4c30-beb6-f12ede8b661b",
+              "name": "List of resource assignments",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/resourceassignments?Fields=<string>&Filter=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resourceassignments"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"ObjectId\": \"<integer>\",\n    \"ActivityObjectId\": \"<integer>\",\n    \"ResourceObjectId\": \"<integer>\",\n    \"PlannedUnits\": \"<double>\",\n    \"ActualUnits\": \"<double>\",\n    \"RemainingUnits\": \"<double>\",\n    \"PlannedCost\": \"<double>\",\n    \"ActualCost\": \"<double>\",\n    \"RemainingCost\": \"<double>\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"RateSource\": \"Override\"\n  },\n  {\n    \"ObjectId\": \"<integer>\",\n    \"ActivityObjectId\": \"<integer>\",\n    \"ResourceObjectId\": \"<integer>\",\n    \"PlannedUnits\": \"<double>\",\n    \"ActualUnits\": \"<double>\",\n    \"RemainingUnits\": \"<double>\",\n    \"PlannedCost\": \"<double>\",\n    \"ActualCost\": \"<double>\",\n    \"RemainingCost\": \"<double>\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"RateSource\": \"Override\"\n  }\n]",
+              "createdAt": "2026-07-28T02:28:10.000Z",
+              "updatedAt": "2026-07-28T02:28:10.000Z",
+              "uid": "35240-21a873a3-69ec-4c30-beb6-f12ede8b661b"
+            },
+            {
+              "id": "5e94f095-36d8-4602-a94e-66eec663dc85",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/resourceassignments?Fields=<string>&Filter=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resourceassignments"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:10.000Z",
+              "updatedAt": "2026-07-28T02:28:10.000Z",
+              "uid": "35240-5e94f095-36d8-4602-a94e-66eec663dc85"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:10.000Z",
+          "updatedAt": "2026-07-28T02:28:10.000Z",
+          "uid": "35240-47b9a5d5-45ea-4185-9e90-5ab188ba6cc8"
+        }
+      ],
+      "id": "fff99228-d543-4bc5-9eff-6460950f859c",
+      "createdAt": "2026-07-28T02:28:10.000Z",
+      "updatedAt": "2026-07-28T02:28:10.000Z",
+      "uid": "35240-fff99228-d543-4bc5-9eff-6460950f859c"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "primavera.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}/p6ws/rest/v1"
+    }
+  ]
+}

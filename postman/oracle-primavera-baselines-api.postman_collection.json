@@ -1,0 +1,193 @@
+{
+  "info": {
+    "_postman_id": "f5383e57-47a0-43d5-a6ac-71c66562b7f6",
+    "name": "Oracle Primavera P6 EPPM REST Activities Baselines API",
+    "description": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:28:08.000Z",
+    "updatedAt": "2026-07-28T02:28:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f5383e57-47a0-43d5-a6ac-71c66562b7f6"
+  },
+  "item": [
+    {
+      "name": "baselines",
+      "item": [
+        {
+          "name": "List baselines",
+          "id": "ec67ee97-2c02-41e1-8a1c-91c4f87bd06f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/baselines?Fields=<string>&Filter=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "baselines"
+              ],
+              "query": [
+                {
+                  "key": "Fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "Filter",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns project baselines including planned dates and costs."
+          },
+          "response": [
+            {
+              "id": "7737b86c-1f8e-4dea-9645-5546055d6e06",
+              "name": "List of baselines",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/baselines?Fields=<string>&Filter=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "baselines"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"ProjectObjectId\": \"<integer>\",\n    \"BaselineType\": \"Current Budget\",\n    \"LastUpdateDate\": \"<dateTime>\"\n  },\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"ProjectObjectId\": \"<integer>\",\n    \"BaselineType\": \"Mid-Project Baseline\",\n    \"LastUpdateDate\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:28:08.000Z",
+              "updatedAt": "2026-07-28T02:28:08.000Z",
+              "uid": "35240-7737b86c-1f8e-4dea-9645-5546055d6e06"
+            },
+            {
+              "id": "4ad0e18b-62ba-4d88-b106-cea0eb431df5",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/baselines?Fields=<string>&Filter=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "baselines"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:08.000Z",
+              "updatedAt": "2026-07-28T02:28:08.000Z",
+              "uid": "35240-4ad0e18b-62ba-4d88-b106-cea0eb431df5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:08.000Z",
+          "updatedAt": "2026-07-28T02:28:08.000Z",
+          "uid": "35240-ec67ee97-2c02-41e1-8a1c-91c4f87bd06f"
+        }
+      ],
+      "id": "5cc95076-52a1-4d1d-8293-3ccc88da46b0",
+      "createdAt": "2026-07-28T02:28:08.000Z",
+      "updatedAt": "2026-07-28T02:28:08.000Z",
+      "uid": "35240-5cc95076-52a1-4d1d-8293-3ccc88da46b0"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "primavera.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}/p6ws/rest/v1"
+    }
+  ]
+}

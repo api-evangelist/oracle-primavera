@@ -1,0 +1,709 @@
+{
+  "info": {
+    "_postman_id": "0adc352c-8e99-4373-9434-4402c17bcdc6",
+    "name": "Oracle Primavera P6 EPPM REST Activities API",
+    "description": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:28:07.000Z",
+    "updatedAt": "2026-07-28T02:28:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0adc352c-8e99-4373-9434-4402c17bcdc6"
+  },
+  "item": [
+    {
+      "name": "activities",
+      "item": [
+        {
+          "name": "{objectId}",
+          "item": [
+            {
+              "name": "Get an activity",
+              "id": "921286e0-98cd-4337-b40d-d88285a9c5d1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/activities/:objectId?Fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "activities",
+                    ":objectId"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "566e9ba9-8c5b-4050-89f2-1566ee330ab2",
+                      "key": "objectId",
+                      "value": "<long>",
+                      "description": "(Required) Unique numeric ObjectId"
+                    }
+                  ]
+                },
+                "description": "Returns details for a single activity."
+              },
+              "response": [
+                {
+                  "id": "7c61376a-e3cf-4972-8c82-f7c5529199be",
+                  "name": "Activity details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/activities/:objectId?Fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "activities",
+                        ":objectId"
+                      ],
+                      "query": [
+                        {
+                          "key": "Fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"ProjectObjectId\": \"<integer>\",\n    \"WBSObjectId\": \"<integer>\",\n    \"Type\": \"Task Dependent\",\n    \"Status\": \"Completed\",\n    \"PercentComplete\": \"<double>\",\n    \"PercentCompleteType\": \"Physical\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"RemainingStartDate\": \"<dateTime>\",\n    \"RemainingFinishDate\": \"<dateTime>\",\n    \"PlannedDuration\": \"<double>\",\n    \"ActualDuration\": \"<double>\",\n    \"RemainingDuration\": \"<double>\",\n    \"TotalFloat\": \"<double>\",\n    \"FreeFloat\": \"<double>\",\n    \"CriticalFlag\": \"<boolean>\",\n    \"CalendarObjectId\": \"<integer>\"\n  },\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"ProjectObjectId\": \"<integer>\",\n    \"WBSObjectId\": \"<integer>\",\n    \"Type\": \"Resource Dependent\",\n    \"Status\": \"In Progress\",\n    \"PercentComplete\": \"<double>\",\n    \"PercentCompleteType\": \"Duration\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"RemainingStartDate\": \"<dateTime>\",\n    \"RemainingFinishDate\": \"<dateTime>\",\n    \"PlannedDuration\": \"<double>\",\n    \"ActualDuration\": \"<double>\",\n    \"RemainingDuration\": \"<double>\",\n    \"TotalFloat\": \"<double>\",\n    \"FreeFloat\": \"<double>\",\n    \"CriticalFlag\": \"<boolean>\",\n    \"CalendarObjectId\": \"<integer>\"\n  }\n]",
+                  "createdAt": "2026-07-28T02:28:07.000Z",
+                  "updatedAt": "2026-07-28T02:28:07.000Z",
+                  "uid": "35240-7c61376a-e3cf-4972-8c82-f7c5529199be"
+                },
+                {
+                  "id": "942917e8-d4d1-40e4-b2e3-4bc9af6ff2e5",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/activities/:objectId?Fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "activities",
+                        ":objectId"
+                      ],
+                      "query": [
+                        {
+                          "key": "Fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:28:07.000Z",
+                  "updatedAt": "2026-07-28T02:28:07.000Z",
+                  "uid": "35240-942917e8-d4d1-40e4-b2e3-4bc9af6ff2e5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:28:07.000Z",
+              "updatedAt": "2026-07-28T02:28:07.000Z",
+              "uid": "35240-921286e0-98cd-4337-b40d-d88285a9c5d1"
+            },
+            {
+              "name": "Update an activity",
+              "id": "a28bea72-10e7-45b3-9590-5ad920e7c7d9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"PercentComplete\": \"<double>\",\n  \"ActualStartDate\": \"<dateTime>\",\n  \"ActualFinishDate\": \"<dateTime>\",\n  \"RemainingDuration\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/activities/:objectId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "activities",
+                    ":objectId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2a0555cc-39ff-41e1-becd-efbc0a6466df",
+                      "key": "objectId",
+                      "value": "<long>",
+                      "description": "(Required) Unique numeric ObjectId"
+                    }
+                  ]
+                },
+                "description": "Updates scheduling fields on an activity."
+              },
+              "response": [
+                {
+                  "id": "f863d66b-1750-44f0-ad73-093e86988f23",
+                  "name": "Update confirmation",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"PercentComplete\": \"<double>\",\n  \"ActualStartDate\": \"<dateTime>\",\n  \"ActualFinishDate\": \"<dateTime>\",\n  \"RemainingDuration\": \"<double>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/activities/:objectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "activities",
+                        ":objectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:28:07.000Z",
+                  "updatedAt": "2026-07-28T02:28:07.000Z",
+                  "uid": "35240-f863d66b-1750-44f0-ad73-093e86988f23"
+                },
+                {
+                  "id": "d5ce6ecc-a4a9-419c-9959-2166e02f0a28",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"PercentComplete\": \"<double>\",\n  \"ActualStartDate\": \"<dateTime>\",\n  \"ActualFinishDate\": \"<dateTime>\",\n  \"RemainingDuration\": \"<double>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/activities/:objectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "activities",
+                        ":objectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:28:07.000Z",
+                  "updatedAt": "2026-07-28T02:28:07.000Z",
+                  "uid": "35240-d5ce6ecc-a4a9-419c-9959-2166e02f0a28"
+                }
+              ],
+              "createdAt": "2026-07-28T02:28:07.000Z",
+              "updatedAt": "2026-07-28T02:28:07.000Z",
+              "uid": "35240-a28bea72-10e7-45b3-9590-5ad920e7c7d9"
+            }
+          ],
+          "id": "cc866499-b744-49fe-89c0-9b914eb2c655",
+          "createdAt": "2026-07-28T02:28:07.000Z",
+          "updatedAt": "2026-07-28T02:28:07.000Z",
+          "uid": "35240-cc866499-b744-49fe-89c0-9b914eb2c655"
+        },
+        {
+          "name": "List activities",
+          "id": "7f6b3941-85a9-4868-90b9-4b5743562814",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/activities?Fields=<string>&Filter=<string>&offset=0&limit=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "activities"
+              ],
+              "query": [
+                {
+                  "key": "Fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by project or WBS; e.g. ProjectObjectId eq 12345",
+                  "key": "Filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "100"
+                }
+              ]
+            },
+            "description": "Returns activities with scheduling data including planned dates, durations, and relationships."
+          },
+          "response": [
+            {
+              "id": "c085fa4a-dc0b-4b16-a9fd-6229b829260f",
+              "name": "List of activities",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/activities?Fields=<string>&Filter=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "activities"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by project or WBS; e.g. ProjectObjectId eq 12345",
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"ProjectObjectId\": \"<integer>\",\n    \"WBSObjectId\": \"<integer>\",\n    \"Type\": \"Task Dependent\",\n    \"Status\": \"Completed\",\n    \"PercentComplete\": \"<double>\",\n    \"PercentCompleteType\": \"Physical\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"RemainingStartDate\": \"<dateTime>\",\n    \"RemainingFinishDate\": \"<dateTime>\",\n    \"PlannedDuration\": \"<double>\",\n    \"ActualDuration\": \"<double>\",\n    \"RemainingDuration\": \"<double>\",\n    \"TotalFloat\": \"<double>\",\n    \"FreeFloat\": \"<double>\",\n    \"CriticalFlag\": \"<boolean>\",\n    \"CalendarObjectId\": \"<integer>\"\n  },\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"ProjectObjectId\": \"<integer>\",\n    \"WBSObjectId\": \"<integer>\",\n    \"Type\": \"Resource Dependent\",\n    \"Status\": \"In Progress\",\n    \"PercentComplete\": \"<double>\",\n    \"PercentCompleteType\": \"Duration\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"RemainingStartDate\": \"<dateTime>\",\n    \"RemainingFinishDate\": \"<dateTime>\",\n    \"PlannedDuration\": \"<double>\",\n    \"ActualDuration\": \"<double>\",\n    \"RemainingDuration\": \"<double>\",\n    \"TotalFloat\": \"<double>\",\n    \"FreeFloat\": \"<double>\",\n    \"CriticalFlag\": \"<boolean>\",\n    \"CalendarObjectId\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:28:07.000Z",
+              "updatedAt": "2026-07-28T02:28:07.000Z",
+              "uid": "35240-c085fa4a-dc0b-4b16-a9fd-6229b829260f"
+            },
+            {
+              "id": "afcffa97-501b-4065-94e6-c25fc389f1e5",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/activities?Fields=<string>&Filter=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "activities"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by project or WBS; e.g. ProjectObjectId eq 12345",
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:07.000Z",
+              "updatedAt": "2026-07-28T02:28:07.000Z",
+              "uid": "35240-afcffa97-501b-4065-94e6-c25fc389f1e5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:07.000Z",
+          "updatedAt": "2026-07-28T02:28:07.000Z",
+          "uid": "35240-7f6b3941-85a9-4868-90b9-4b5743562814"
+        },
+        {
+          "name": "Create an activity",
+          "id": "d4784d97-6edb-48c7-b4ab-e1414fa85676",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"ProjectObjectId\": \"<integer>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Type\": \"Resource Dependent\",\n  \"PlannedStartDate\": \"<dateTime>\",\n  \"PlannedFinishDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/activities",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "activities"
+              ]
+            },
+            "description": "Creates a new activity within a project."
+          },
+          "response": [
+            {
+              "id": "b1fab123-06e5-4527-815b-891306e217da",
+              "name": "Created activity ObjectId",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"ProjectObjectId\": \"<integer>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Type\": \"Resource Dependent\",\n  \"PlannedStartDate\": \"<dateTime>\",\n  \"PlannedFinishDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/activities",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "activities"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"ObjectId\": \"<integer>\"\n  },\n  {\n    \"ObjectId\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:28:07.000Z",
+              "updatedAt": "2026-07-28T02:28:07.000Z",
+              "uid": "35240-b1fab123-06e5-4527-815b-891306e217da"
+            },
+            {
+              "id": "fa011be0-3917-45ec-9d1c-c06d64218b29",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"ProjectObjectId\": \"<integer>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Type\": \"Resource Dependent\",\n  \"PlannedStartDate\": \"<dateTime>\",\n  \"PlannedFinishDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/activities",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "activities"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:07.000Z",
+              "updatedAt": "2026-07-28T02:28:07.000Z",
+              "uid": "35240-fa011be0-3917-45ec-9d1c-c06d64218b29"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:07.000Z",
+          "updatedAt": "2026-07-28T02:28:07.000Z",
+          "uid": "35240-d4784d97-6edb-48c7-b4ab-e1414fa85676"
+        }
+      ],
+      "id": "226038ec-5949-4738-a20d-efd017036be2",
+      "createdAt": "2026-07-28T02:28:07.000Z",
+      "updatedAt": "2026-07-28T02:28:07.000Z",
+      "uid": "35240-226038ec-5949-4738-a20d-efd017036be2"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "primavera.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}/p6ws/rest/v1"
+    }
+  ]
+}

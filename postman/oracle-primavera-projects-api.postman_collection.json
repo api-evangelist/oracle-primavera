@@ -1,0 +1,1050 @@
+{
+  "info": {
+    "_postman_id": "2d8958e8-9520-4440-810c-666f9adea3f1",
+    "name": "Oracle Primavera P6 EPPM REST Activities Projects API",
+    "description": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:28:09.000Z",
+    "updatedAt": "2026-07-28T02:28:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2d8958e8-9520-4440-810c-666f9adea3f1"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{objectId}",
+          "item": [
+            {
+              "name": "Get a project",
+              "id": "6be0b9bd-f136-4718-88dd-682a5aeff662",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:objectId?Fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to return",
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "390243ce-e0ea-4d16-a474-a61181618fd0",
+                      "key": "objectId",
+                      "value": "<long>",
+                      "description": "(Required) Unique numeric ObjectId"
+                    }
+                  ]
+                },
+                "description": "Returns a single project by its ObjectId."
+              },
+              "response": [
+                {
+                  "id": "0498d541-613a-4266-9186-789f46d486f2",
+                  "name": "Project details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:objectId?Fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":objectId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of fields to return",
+                          "key": "Fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"Status\": \"Planned\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"DataDate\": \"<dateTime>\",\n    \"PercentComplete\": \"<double>\",\n    \"TotalBudgetCost\": \"<double>\",\n    \"EarnedValueCost\": \"<double>\",\n    \"PlannedTotalCost\": \"<double>\",\n    \"RiskLevel\": \"Very High\",\n    \"WBSObjectId\": \"<integer>\",\n    \"OBSObjectId\": \"<integer>\",\n    \"LastUpdateDate\": \"<dateTime>\",\n    \"CreateDate\": \"<dateTime>\"\n  },\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"Status\": \"What-if\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"DataDate\": \"<dateTime>\",\n    \"PercentComplete\": \"<double>\",\n    \"TotalBudgetCost\": \"<double>\",\n    \"EarnedValueCost\": \"<double>\",\n    \"PlannedTotalCost\": \"<double>\",\n    \"RiskLevel\": \"Medium\",\n    \"WBSObjectId\": \"<integer>\",\n    \"OBSObjectId\": \"<integer>\",\n    \"LastUpdateDate\": \"<dateTime>\",\n    \"CreateDate\": \"<dateTime>\"\n  }\n]",
+                  "createdAt": "2026-07-28T02:28:09.000Z",
+                  "updatedAt": "2026-07-28T02:28:09.000Z",
+                  "uid": "35240-0498d541-613a-4266-9186-789f46d486f2"
+                },
+                {
+                  "id": "008f976a-3c9d-40a4-9997-946880bf74df",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:objectId?Fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":objectId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of fields to return",
+                          "key": "Fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:28:09.000Z",
+                  "updatedAt": "2026-07-28T02:28:09.000Z",
+                  "uid": "35240-008f976a-3c9d-40a4-9997-946880bf74df"
+                }
+              ],
+              "createdAt": "2026-07-28T02:28:09.000Z",
+              "updatedAt": "2026-07-28T02:28:09.000Z",
+              "uid": "35240-6be0b9bd-f136-4718-88dd-682a5aeff662"
+            },
+            {
+              "name": "Update a project",
+              "id": "9c40eea5-676b-4b9e-906a-cffab7cf6d52",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Status\": \"Inactive\",\n  \"DataDate\": \"<dateTime>\",\n  \"PercentComplete\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:objectId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b10d9852-640c-4d9e-9826-4f81d1d3b035",
+                      "key": "objectId",
+                      "value": "<long>",
+                      "description": "(Required) Unique numeric ObjectId"
+                    }
+                  ]
+                },
+                "description": "Updates fields on an existing project."
+              },
+              "response": [
+                {
+                  "id": "ca458ff6-7f07-416f-96a2-3ccc631f03df",
+                  "name": "Update confirmation",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Status\": \"Inactive\",\n  \"DataDate\": \"<dateTime>\",\n  \"PercentComplete\": \"<double>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:objectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":objectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:28:09.000Z",
+                  "updatedAt": "2026-07-28T02:28:09.000Z",
+                  "uid": "35240-ca458ff6-7f07-416f-96a2-3ccc631f03df"
+                },
+                {
+                  "id": "cf5e089c-d6da-4ecb-920a-033611118c35",
+                  "name": "Invalid request parameters",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Status\": \"Inactive\",\n  \"DataDate\": \"<dateTime>\",\n  \"PercentComplete\": \"<double>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:objectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":objectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:28:09.000Z",
+                  "updatedAt": "2026-07-28T02:28:09.000Z",
+                  "uid": "35240-cf5e089c-d6da-4ecb-920a-033611118c35"
+                },
+                {
+                  "id": "16654007-40ac-47fb-b2a8-2b7325c634e2",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Status\": \"Inactive\",\n  \"DataDate\": \"<dateTime>\",\n  \"PercentComplete\": \"<double>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:objectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":objectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:28:09.000Z",
+                  "updatedAt": "2026-07-28T02:28:09.000Z",
+                  "uid": "35240-16654007-40ac-47fb-b2a8-2b7325c634e2"
+                }
+              ],
+              "createdAt": "2026-07-28T02:28:09.000Z",
+              "updatedAt": "2026-07-28T02:28:09.000Z",
+              "uid": "35240-9c40eea5-676b-4b9e-906a-cffab7cf6d52"
+            },
+            {
+              "name": "Delete a project",
+              "id": "115c1288-68f4-4761-86e9-4f03d8910b05",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:objectId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ba8b8fc7-8568-4b2d-ae69-522b56d655eb",
+                      "key": "objectId",
+                      "value": "<long>",
+                      "description": "(Required) Unique numeric ObjectId"
+                    }
+                  ]
+                },
+                "description": "Permanently deletes a project and all its child objects."
+              },
+              "response": [
+                {
+                  "id": "a6b6e26f-176b-472f-9ede-6dcaade9aa56",
+                  "name": "Delete confirmation",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:objectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":objectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:28:09.000Z",
+                  "updatedAt": "2026-07-28T02:28:09.000Z",
+                  "uid": "35240-a6b6e26f-176b-472f-9ede-6dcaade9aa56"
+                },
+                {
+                  "id": "d47a9630-a4dc-4f97-a731-dc3e75381304",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:objectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":objectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:28:09.000Z",
+                  "updatedAt": "2026-07-28T02:28:09.000Z",
+                  "uid": "35240-d47a9630-a4dc-4f97-a731-dc3e75381304"
+                }
+              ],
+              "createdAt": "2026-07-28T02:28:09.000Z",
+              "updatedAt": "2026-07-28T02:28:09.000Z",
+              "uid": "35240-115c1288-68f4-4761-86e9-4f03d8910b05"
+            }
+          ],
+          "id": "19375011-2e0c-4c29-a1cc-5dcfa428abf7",
+          "createdAt": "2026-07-28T02:28:09.000Z",
+          "updatedAt": "2026-07-28T02:28:09.000Z",
+          "uid": "35240-19375011-2e0c-4c29-a1cc-5dcfa428abf7"
+        },
+        {
+          "name": "List projects",
+          "id": "771b7e9a-5e1e-41c5-9612-e0cad6231a71",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects?Fields=<string>&Filter=<string>&OrderBy=<string>&offset=0&limit=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of fields to return",
+                  "key": "Fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "RSQL filter expression",
+                  "key": "Filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Field to sort by",
+                  "key": "OrderBy",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Pagination offset",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Maximum records to return",
+                  "key": "limit",
+                  "value": "100"
+                }
+              ]
+            },
+            "description": "Returns a collection of projects accessible to the authenticated user, with optional field filtering."
+          },
+          "response": [
+            {
+              "id": "e7b467d3-2b7c-4a7f-b6b2-f19ced55c216",
+              "name": "List of projects",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects?Fields=<string>&Filter=<string>&OrderBy=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to return",
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "RSQL filter expression",
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort by",
+                      "key": "OrderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Pagination offset",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum records to return",
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"Status\": \"Planned\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"DataDate\": \"<dateTime>\",\n    \"PercentComplete\": \"<double>\",\n    \"TotalBudgetCost\": \"<double>\",\n    \"EarnedValueCost\": \"<double>\",\n    \"PlannedTotalCost\": \"<double>\",\n    \"RiskLevel\": \"Very High\",\n    \"WBSObjectId\": \"<integer>\",\n    \"OBSObjectId\": \"<integer>\",\n    \"LastUpdateDate\": \"<dateTime>\",\n    \"CreateDate\": \"<dateTime>\"\n  },\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Id\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"Status\": \"What-if\",\n    \"PlannedStartDate\": \"<dateTime>\",\n    \"PlannedFinishDate\": \"<dateTime>\",\n    \"ActualStartDate\": \"<dateTime>\",\n    \"ActualFinishDate\": \"<dateTime>\",\n    \"DataDate\": \"<dateTime>\",\n    \"PercentComplete\": \"<double>\",\n    \"TotalBudgetCost\": \"<double>\",\n    \"EarnedValueCost\": \"<double>\",\n    \"PlannedTotalCost\": \"<double>\",\n    \"RiskLevel\": \"Medium\",\n    \"WBSObjectId\": \"<integer>\",\n    \"OBSObjectId\": \"<integer>\",\n    \"LastUpdateDate\": \"<dateTime>\",\n    \"CreateDate\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:28:09.000Z",
+              "updatedAt": "2026-07-28T02:28:09.000Z",
+              "uid": "35240-e7b467d3-2b7c-4a7f-b6b2-f19ced55c216"
+            },
+            {
+              "id": "353c0e62-07e3-4878-a201-d9e34dfc99b3",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects?Fields=<string>&Filter=<string>&OrderBy=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to return",
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "RSQL filter expression",
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort by",
+                      "key": "OrderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Pagination offset",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum records to return",
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:09.000Z",
+              "updatedAt": "2026-07-28T02:28:09.000Z",
+              "uid": "35240-353c0e62-07e3-4878-a201-d9e34dfc99b3"
+            },
+            {
+              "id": "54c9ddea-1fd8-4e97-837d-b86df99be8b6",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects?Fields=<string>&Filter=<string>&OrderBy=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to return",
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "RSQL filter expression",
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field to sort by",
+                      "key": "OrderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Pagination offset",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum records to return",
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:09.000Z",
+              "updatedAt": "2026-07-28T02:28:09.000Z",
+              "uid": "35240-54c9ddea-1fd8-4e97-837d-b86df99be8b6"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:09.000Z",
+          "updatedAt": "2026-07-28T02:28:09.000Z",
+          "uid": "35240-771b7e9a-5e1e-41c5-9612-e0cad6231a71"
+        },
+        {
+          "name": "Create a project",
+          "id": "0645b6f7-9a1e-4368-9c69-8db4a5a1da22",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Status\": \"Active\",\n  \"PlannedStartDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "Creates a new project in the P6 EPPM system."
+          },
+          "response": [
+            {
+              "id": "d72730b4-0507-4bd9-b8f9-f1a641e8ac2d",
+              "name": "Created project object IDs",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Status\": \"Active\",\n  \"PlannedStartDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"ObjectId\": \"<integer>\"\n  },\n  {\n    \"ObjectId\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:28:09.000Z",
+              "updatedAt": "2026-07-28T02:28:09.000Z",
+              "uid": "35240-d72730b4-0507-4bd9-b8f9-f1a641e8ac2d"
+            },
+            {
+              "id": "eb070735-02a9-418c-b5ed-a75a70ab5c1c",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Status\": \"Active\",\n  \"PlannedStartDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:09.000Z",
+              "updatedAt": "2026-07-28T02:28:09.000Z",
+              "uid": "35240-eb070735-02a9-418c-b5ed-a75a70ab5c1c"
+            },
+            {
+              "id": "12931a0e-5336-4451-9a30-b914a7fc4c63",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Status\": \"Active\",\n  \"PlannedStartDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:09.000Z",
+              "updatedAt": "2026-07-28T02:28:09.000Z",
+              "uid": "35240-12931a0e-5336-4451-9a30-b914a7fc4c63"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:09.000Z",
+          "updatedAt": "2026-07-28T02:28:09.000Z",
+          "uid": "35240-0645b6f7-9a1e-4368-9c69-8db4a5a1da22"
+        }
+      ],
+      "id": "f354f82c-674e-4996-a3e2-83208f6038f6",
+      "createdAt": "2026-07-28T02:28:09.000Z",
+      "updatedAt": "2026-07-28T02:28:09.000Z",
+      "uid": "35240-f354f82c-674e-4996-a3e2-83208f6038f6"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "primavera.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}/p6ws/rest/v1"
+    }
+  ]
+}

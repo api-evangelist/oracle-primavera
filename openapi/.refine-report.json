@@ -1,0 +1,24 @@
+{
+  "provider": "oracle-primavera",
+  "sources": [
+    "oracle-primavera-activities-api-openapi.yml",
+    "oracle-primavera-baselines-api-openapi.yml",
+    "oracle-primavera-projects-api-openapi.yml",
+    "oracle-primavera-resourceassignments-api-openapi.yml",
+    "oracle-primavera-resources-api-openapi.yml",
+    "oracle-primavera-wbs-api-openapi.yml"
+  ],
+  "outputs": [
+    "oracle-primavera-activities-api-openapi.yml",
+    "oracle-primavera-baselines-api-openapi.yml",
+    "oracle-primavera-projects-api-openapi.yml",
+    "oracle-primavera-resourceassignments-api-openapi.yml",
+    "oracle-primavera-resources-api-openapi.yml",
+    "oracle-primavera-wbs-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

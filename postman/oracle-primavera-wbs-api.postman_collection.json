@@ -1,0 +1,217 @@
+{
+  "info": {
+    "_postman_id": "d26d9957-feea-44a8-a311-30ab0eba0d99",
+    "name": "Oracle Primavera P6 EPPM REST Activities WBS API",
+    "description": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:28:14.000Z",
+    "updatedAt": "2026-07-28T02:28:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d26d9957-feea-44a8-a311-30ab0eba0d99"
+  },
+  "item": [
+    {
+      "name": "wbss",
+      "item": [
+        {
+          "name": "List WBS elements",
+          "id": "9c6b1e00-b0ea-476e-877c-1a1ed9c72f97",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/wbss?Fields=<string>&Filter=<string>&offset=0&limit=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "wbss"
+              ],
+              "query": [
+                {
+                  "key": "Fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "Filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "100"
+                }
+              ]
+            },
+            "description": "Returns Work Breakdown Structure elements for projects."
+          },
+          "response": [
+            {
+              "id": "764159c3-ac8a-4965-8b1a-7cc0c57c93b5",
+              "name": "List of WBS elements",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wbss?Fields=<string>&Filter=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wbss"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Code\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"ProjectObjectId\": \"<integer>\",\n    \"ParentObjectId\": \"<integer>\",\n    \"SequenceNumber\": \"<integer>\",\n    \"StatusCode\": \"Active\",\n    \"OBSObjectId\": \"<integer>\"\n  },\n  {\n    \"ObjectId\": \"<integer>\",\n    \"Code\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"ProjectObjectId\": \"<integer>\",\n    \"ParentObjectId\": \"<integer>\",\n    \"SequenceNumber\": \"<integer>\",\n    \"StatusCode\": \"Inactive\",\n    \"OBSObjectId\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:28:15.000Z",
+              "updatedAt": "2026-07-28T02:28:15.000Z",
+              "uid": "35240-764159c3-ac8a-4965-8b1a-7cc0c57c93b5"
+            },
+            {
+              "id": "1ff5259b-371c-4102-a1e7-46780b6ce89a",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wbss?Fields=<string>&Filter=<string>&offset=0&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wbss"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"ErrorMessage\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:28:15.000Z",
+              "updatedAt": "2026-07-28T02:28:15.000Z",
+              "uid": "35240-1ff5259b-371c-4102-a1e7-46780b6ce89a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:15.000Z",
+          "updatedAt": "2026-07-28T02:28:15.000Z",
+          "uid": "35240-9c6b1e00-b0ea-476e-877c-1a1ed9c72f97"
+        }
+      ],
+      "id": "90d73721-9249-4b2e-9844-b481cdd95d1b",
+      "createdAt": "2026-07-28T02:28:15.000Z",
+      "updatedAt": "2026-07-28T02:28:15.000Z",
+      "uid": "35240-90d73721-9249-4b2e-9844-b481cdd95d1b"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "primavera.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}/p6ws/rest/v1"
+    }
+  ]
+}
