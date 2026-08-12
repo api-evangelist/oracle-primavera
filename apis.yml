@@ -227,7 +227,7 @@ common:
   - type: TermsOfService
     url: https://www.oracle.com/legal/terms.html
   - type: OpenAPI
-    url: openapi/oracle-primavera-p6-eppm-openapi.yml
+    url: openapi/_original/oracle-primavera-p6-eppm-openapi.yml
   - type: JSONSchema
     url: json-schema/oracle-primavera-project-schema.json
   - type: JSONSchema
