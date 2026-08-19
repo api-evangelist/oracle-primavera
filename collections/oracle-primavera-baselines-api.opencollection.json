@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle Primavera P6 EPPM REST Activities Baselines API",
+    "version": "26.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Baselines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List baselines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/p6ws/rest/v1/baselines",
+            "params": [
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns project baselines including planned dates and costs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

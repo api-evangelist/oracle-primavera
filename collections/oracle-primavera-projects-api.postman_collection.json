@@ -1,0 +1,1171 @@
+{
+  "item": [
+    {
+      "id": "29e34c3d-7452-4967-bfdf-78de88477cbd",
+      "name": "Projects",
+      "description": {
+        "content": "Project management operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0bca6a17-f17c-4ab1-804a-c371dbce3a8b",
+          "name": "List projects",
+          "request": {
+            "name": "List projects",
+            "description": {
+              "content": "Returns a collection of projects accessible to the authenticated user, with optional field filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "Filter",
+                  "value": "<string>",
+                  "description": "RSQL filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "OrderBy",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum records to return"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "P6 EPPM server hostname",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "852b57b0-6a62-4601-b1a8-9f68fb45268f",
+              "name": "List of projects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "ObjectId,Id,Name,Status,StartDate,FinishDate"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "OrderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ObjectId\": 2363,\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"Status\": \"Planned\",\n    \"PlannedStartDate\": \"2025-02-17T23:20:08.180Z\",\n    \"PlannedFinishDate\": \"1963-05-28T03:59:58.986Z\",\n    \"ActualStartDate\": \"1958-06-25T19:42:04.281Z\",\n    \"ActualFinishDate\": \"1960-04-07T07:22:53.938Z\",\n    \"DataDate\": \"2001-12-04T18:03:28.466Z\",\n    \"PercentComplete\": 74.10557090281968,\n    \"TotalBudgetCost\": 7797.387779712338,\n    \"EarnedValueCost\": 2942.9139886611124,\n    \"PlannedTotalCost\": 5754.959942753939,\n    \"RiskLevel\": \"Medium\",\n    \"WBSObjectId\": 1504,\n    \"OBSObjectId\": 1285,\n    \"LastUpdateDate\": \"2023-06-22T20:00:50.685Z\",\n    \"CreateDate\": \"1965-09-19T17:01:59.325Z\"\n  },\n  {\n    \"ObjectId\": 7002,\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"Status\": \"Planned\",\n    \"PlannedStartDate\": \"1993-10-27T15:46:17.601Z\",\n    \"PlannedFinishDate\": \"2001-07-01T01:36:58.057Z\",\n    \"ActualStartDate\": \"1998-02-23T10:19:25.800Z\",\n    \"ActualFinishDate\": \"1959-08-03T23:40:19.310Z\",\n    \"DataDate\": \"2005-04-17T13:05:05.670Z\",\n    \"PercentComplete\": 1.4268329951550696,\n    \"TotalBudgetCost\": 5035.179794677043,\n    \"EarnedValueCost\": 3012.5665861890116,\n    \"PlannedTotalCost\": 9913.759931640529,\n    \"RiskLevel\": \"Very High\",\n    \"WBSObjectId\": 1824,\n    \"OBSObjectId\": 287,\n    \"LastUpdateDate\": \"2022-01-07T14:53:40.145Z\",\n    \"CreateDate\": \"2019-06-01T20:16:39.462Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6590a5be-5c37-45fb-b3a8-e79fb2a82684",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "ObjectId,Id,Name,Status,StartDate,FinishDate"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "OrderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 6003,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2dc648b-0970-4607-b99a-4833b57b8d4c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "ObjectId,Id,Name,Status,StartDate,FinishDate"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "OrderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 6003,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4504a44-783c-407f-8335-a62ab05b93a5",
+          "name": "Create a project",
+          "request": {
+            "name": "Create a project",
+            "description": {
+              "content": "Creates a new project in the P6 EPPM system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "P6 EPPM server hostname",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Status\": \"Active\",\n  \"PlannedStartDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4efd13f-f625-44a5-8dec-958bc87d0c23",
+              "name": "Created project object IDs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Status\": \"Active\",\n  \"PlannedStartDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ObjectId\": 1609\n  },\n  {\n    \"ObjectId\": 4559\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbd6adcc-d63c-44d0-9892-5c77fc325135",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Status\": \"Active\",\n  \"PlannedStartDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 6003,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0eda0c41-54b1-43c0-b1ed-181de516f492",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Id\": \"<string>\",\n  \"WBSObjectId\": \"<integer>\",\n  \"Status\": \"Active\",\n  \"PlannedStartDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 6003,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed379703-7074-45b9-ace2-14073126c64e",
+          "name": "Get a project",
+          "request": {
+            "name": "Get a project",
+            "description": {
+              "content": "Returns a single project by its ObjectId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":objectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "objectId",
+                  "description": "(Required) Unique numeric ObjectId"
+                },
+                {
+                  "description": "P6 EPPM server hostname",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4677904-da3b-49c7-958f-421176650fd4",
+              "name": "Project details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "objectId",
+                      "description": "(Required) Unique numeric ObjectId"
+                    },
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ObjectId\": 2363,\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"Status\": \"Planned\",\n    \"PlannedStartDate\": \"2025-02-17T23:20:08.180Z\",\n    \"PlannedFinishDate\": \"1963-05-28T03:59:58.986Z\",\n    \"ActualStartDate\": \"1958-06-25T19:42:04.281Z\",\n    \"ActualFinishDate\": \"1960-04-07T07:22:53.938Z\",\n    \"DataDate\": \"2001-12-04T18:03:28.466Z\",\n    \"PercentComplete\": 74.10557090281968,\n    \"TotalBudgetCost\": 7797.387779712338,\n    \"EarnedValueCost\": 2942.9139886611124,\n    \"PlannedTotalCost\": 5754.959942753939,\n    \"RiskLevel\": \"Medium\",\n    \"WBSObjectId\": 1504,\n    \"OBSObjectId\": 1285,\n    \"LastUpdateDate\": \"2023-06-22T20:00:50.685Z\",\n    \"CreateDate\": \"1965-09-19T17:01:59.325Z\"\n  },\n  {\n    \"ObjectId\": 7002,\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"Status\": \"Planned\",\n    \"PlannedStartDate\": \"1993-10-27T15:46:17.601Z\",\n    \"PlannedFinishDate\": \"2001-07-01T01:36:58.057Z\",\n    \"ActualStartDate\": \"1998-02-23T10:19:25.800Z\",\n    \"ActualFinishDate\": \"1959-08-03T23:40:19.310Z\",\n    \"DataDate\": \"2005-04-17T13:05:05.670Z\",\n    \"PercentComplete\": 1.4268329951550696,\n    \"TotalBudgetCost\": 5035.179794677043,\n    \"EarnedValueCost\": 3012.5665861890116,\n    \"PlannedTotalCost\": 9913.759931640529,\n    \"RiskLevel\": \"Very High\",\n    \"WBSObjectId\": 1824,\n    \"OBSObjectId\": 287,\n    \"LastUpdateDate\": \"2022-01-07T14:53:40.145Z\",\n    \"CreateDate\": \"2019-06-01T20:16:39.462Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "446426be-8654-451d-b224-b58b1f577b1f",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "objectId",
+                      "description": "(Required) Unique numeric ObjectId"
+                    },
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 6003,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3001e36f-5b4d-4726-8b1f-b17d821b20f9",
+          "name": "Update a project",
+          "request": {
+            "name": "Update a project",
+            "description": {
+              "content": "Updates fields on an existing project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":objectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "objectId",
+                  "description": "(Required) Unique numeric ObjectId"
+                },
+                {
+                  "description": "P6 EPPM server hostname",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"DataDate\": \"<dateTime>\",\n  \"PercentComplete\": \"<double>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "49a0751e-6d46-48c6-bdcb-07171cb3002a",
+              "name": "Update confirmation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "objectId",
+                      "description": "(Required) Unique numeric ObjectId"
+                    },
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"DataDate\": \"<dateTime>\",\n  \"PercentComplete\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8099be62-630e-4a35-9701-dce76f670c92",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "objectId",
+                      "description": "(Required) Unique numeric ObjectId"
+                    },
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"DataDate\": \"<dateTime>\",\n  \"PercentComplete\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 6003,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f08504f0-31f4-4901-b865-1e447e581094",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "objectId",
+                      "description": "(Required) Unique numeric ObjectId"
+                    },
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ObjectId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"DataDate\": \"<dateTime>\",\n  \"PercentComplete\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 6003,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9a7c7b6-fcb1-4c84-b14f-71a0cbf49804",
+          "name": "Delete a project",
+          "request": {
+            "name": "Delete a project",
+            "description": {
+              "content": "Permanently deletes a project and all its child objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":objectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "objectId",
+                  "description": "(Required) Unique numeric ObjectId"
+                },
+                {
+                  "description": "P6 EPPM server hostname",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2fe2e44-45f3-4dc5-8881-81aa67e74551",
+              "name": "Delete confirmation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "objectId",
+                      "description": "(Required) Unique numeric ObjectId"
+                    },
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "486fadd1-777f-48c4-b8b7-99397acd0ffa",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":objectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "objectId",
+                      "description": "(Required) Unique numeric ObjectId"
+                    },
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 6003,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "P6 EPPM server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "primavera.example.com",
+      "key": "host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{host}}/p6ws/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fbc4f465-0253-4393-96d1-bd29ca6ab55a",
+    "name": "Oracle Primavera P6 EPPM REST Activities Projects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+      "type": "text/plain"
+    }
+  }
+}

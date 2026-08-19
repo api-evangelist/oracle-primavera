@@ -1,0 +1,251 @@
+{
+  "item": [
+    {
+      "id": "fd7123c5-3361-4e0c-87f2-e9ed8c505b6f",
+      "name": "WBS",
+      "description": {
+        "content": "Work Breakdown Structure management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af76b6ba-cde6-4aa8-9cde-4666f902e8a9",
+          "name": "List WBS elements",
+          "request": {
+            "name": "List WBS elements",
+            "description": {
+              "content": "Returns Work Breakdown Structure elements for projects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wbss"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "P6 EPPM server hostname",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d6df7bc-ee22-4265-a827-bb484c3b4de2",
+              "name": "List of WBS elements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wbss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "ObjectId,Code,Name,ProjectObjectId,ParentObjectId,SequenceNumber"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ObjectId\": 5874,\n    \"Code\": \"string\",\n    \"Name\": \"string\",\n    \"ProjectObjectId\": 2893,\n    \"ParentObjectId\": 3717,\n    \"SequenceNumber\": 2830,\n    \"StatusCode\": \"Inactive\",\n    \"OBSObjectId\": 2291\n  },\n  {\n    \"ObjectId\": 5933,\n    \"Code\": \"string\",\n    \"Name\": \"string\",\n    \"ProjectObjectId\": 6756,\n    \"ParentObjectId\": 5672,\n    \"SequenceNumber\": 2894,\n    \"StatusCode\": \"Inactive\",\n    \"OBSObjectId\": 4335\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8acbe5e5-d909-4d90-991c-d0ddac73ed2c",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wbss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "ObjectId,Code,Name,ProjectObjectId,ParentObjectId,SequenceNumber"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 4428,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "P6 EPPM server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "primavera.example.com",
+      "key": "host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{host}}/p6ws/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4c1ff2d8-b028-4f4c-8c77-4af379cb07ef",
+    "name": "Oracle Primavera P6 EPPM REST Activities WBS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+      "type": "text/plain"
+    }
+  }
+}

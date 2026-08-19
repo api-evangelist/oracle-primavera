@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle Primavera P6 EPPM REST Activities ResourceAssignments API",
+    "version": "26.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ResourceAssignments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List resource assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/p6ws/rest/v1/resourceassignments",
+            "params": [
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns resource-to-activity assignments with planned and actual units."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

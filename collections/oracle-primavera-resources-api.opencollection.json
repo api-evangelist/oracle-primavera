@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle Primavera P6 EPPM REST Activities Resources API",
+    "version": "26.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/p6ws/rest/v1/resources",
+            "params": [
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns labor, non-labor, and material resources."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

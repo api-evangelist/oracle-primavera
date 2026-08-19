@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle Primavera P6 EPPM REST Activities API",
+    "version": "26.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/p6ws/rest/v1/activities",
+            "params": [
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter by project or WBS; e.g. ProjectObjectId eq 12345"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns activities with scheduling data including planned dates, durations, and relationships."
+        },
+        {
+          "info": {
+            "name": "Create an activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}/p6ws/rest/v1/activities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new activity within a project."
+        },
+        {
+          "info": {
+            "name": "Get an activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/p6ws/rest/v1/activities/:objectId",
+            "params": [
+              {
+                "name": "objectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique numeric ObjectId"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns details for a single activity."
+        },
+        {
+          "info": {
+            "name": "Update an activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}/p6ws/rest/v1/activities/:objectId",
+            "params": [
+              {
+                "name": "objectId",
+                "value": "",
+                "type": "path",
+                "description": "Unique numeric ObjectId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates scheduling fields on an activity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle Primavera P6 EPPM REST Activities WBS API",
+    "version": "26.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "WBS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List WBS elements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/p6ws/rest/v1/wbss",
+            "params": [
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns Work Breakdown Structure elements for projects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,251 @@
+{
+  "item": [
+    {
+      "id": "221de38d-084d-422a-b4c6-b97d140a4ac2",
+      "name": "ResourceAssignments",
+      "description": {
+        "content": "Resource assignment operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "41c3123c-5c44-48e6-a7c9-7b77e2277cdf",
+          "name": "List resource assignments",
+          "request": {
+            "name": "List resource assignments",
+            "description": {
+              "content": "Returns resource-to-activity assignments with planned and actual units.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resourceassignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "P6 EPPM server hostname",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "183a0867-0159-4be1-8f36-ed1a8a3c7e92",
+              "name": "List of resource assignments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resourceassignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "ObjectId,ActivityObjectId,ResourceObjectId,PlannedUnits,ActualUnits,PlannedCost,ActualCost"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ObjectId\": 9185,\n    \"ActivityObjectId\": 3335,\n    \"ResourceObjectId\": 1410,\n    \"PlannedUnits\": 8533.319585561252,\n    \"ActualUnits\": 1641.9832831974202,\n    \"RemainingUnits\": 1440.7304138298082,\n    \"PlannedCost\": 8123.411455735194,\n    \"ActualCost\": 5116.10793747021,\n    \"RemainingCost\": 874.2888778188196,\n    \"PlannedStartDate\": \"2016-02-14T10:04:35.437Z\",\n    \"PlannedFinishDate\": \"1976-10-28T01:11:39.644Z\",\n    \"ActualStartDate\": \"2003-01-15T18:49:11.000Z\",\n    \"ActualFinishDate\": \"1989-05-20T01:35:44.089Z\",\n    \"RateSource\": \"Role\"\n  },\n  {\n    \"ObjectId\": 2362,\n    \"ActivityObjectId\": 8237,\n    \"ResourceObjectId\": 7176,\n    \"PlannedUnits\": 5236.774145076794,\n    \"ActualUnits\": 9895.843645086139,\n    \"RemainingUnits\": 5655.727013314931,\n    \"PlannedCost\": 192.9427888895452,\n    \"ActualCost\": 219.4379789796308,\n    \"RemainingCost\": 608.6006832205015,\n    \"PlannedStartDate\": \"2010-12-22T11:51:16.614Z\",\n    \"PlannedFinishDate\": \"1974-06-05T04:35:29.347Z\",\n    \"ActualStartDate\": \"2006-10-23T20:42:57.286Z\",\n    \"ActualFinishDate\": \"1961-11-05T09:14:11.309Z\",\n    \"RateSource\": \"Resource\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a349f976-b3ee-46fa-829c-7dba21cb6a36",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resourceassignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "ObjectId,ActivityObjectId,ResourceObjectId,PlannedUnits,ActualUnits,PlannedCost,ActualCost"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 5169,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "P6 EPPM server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "primavera.example.com",
+      "key": "host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{host}}/p6ws/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "62dd3db9-4080-4446-b6a4-323c7942ea89",
+    "name": "Oracle Primavera P6 EPPM REST Activities ResourceAssignments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+      "type": "text/plain"
+    }
+  }
+}

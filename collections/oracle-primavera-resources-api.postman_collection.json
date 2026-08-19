@@ -1,0 +1,251 @@
+{
+  "item": [
+    {
+      "id": "bf7baa2a-df73-4f97-8f28-e61bbf42983a",
+      "name": "Resources",
+      "description": {
+        "content": "Resource and role management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bdaafc10-9dbf-4ebf-a4de-19604c1de4f8",
+          "name": "List resources",
+          "request": {
+            "name": "List resources",
+            "description": {
+              "content": "Returns labor, non-labor, and material resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "P6 EPPM server hostname",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "839e6252-9b4e-4f2e-ae9a-966b424130de",
+              "name": "List of resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "ObjectId,Id,Name,ResourceType,UnitOfMeasure,PricePerUnit"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ObjectId\": 1704,\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"ResourceType\": \"Nonlabor\",\n    \"UnitOfMeasure\": \"string\",\n    \"DefaultUnitsPerTime\": 4281.247835368605,\n    \"PricePerUnit\": 6509.124600559812,\n    \"CalendarObjectId\": 5281,\n    \"EmailAddress\": \"string\",\n    \"OfficePhone\": \"string\",\n    \"ParentObjectId\": 1131\n  },\n  {\n    \"ObjectId\": 8167,\n    \"Id\": \"string\",\n    \"Name\": \"string\",\n    \"ResourceType\": \"Nonlabor\",\n    \"UnitOfMeasure\": \"string\",\n    \"DefaultUnitsPerTime\": 9784.840375059914,\n    \"PricePerUnit\": 8708.504746670893,\n    \"CalendarObjectId\": 5246,\n    \"EmailAddress\": \"string\",\n    \"OfficePhone\": \"string\",\n    \"ParentObjectId\": 2250\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "558c6f28-da07-475a-834e-6a86611e3673",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "ObjectId,Id,Name,ResourceType,UnitOfMeasure,PricePerUnit"
+                    },
+                    {
+                      "key": "Filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "P6 EPPM server hostname",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 4015,\n  \"ErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "P6 EPPM server hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "primavera.example.com",
+      "key": "host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{host}}/p6ws/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c66cc9ad-40fa-4c09-8709-4a259bdabf8f",
+    "name": "Oracle Primavera P6 EPPM REST Activities Resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.\n\nContact Support:\n Name: Oracle Support",
+      "type": "text/plain"
+    }
+  }
+}
