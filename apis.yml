@@ -5,6 +5,18 @@ description: Oracle Primavera is a portfolio of project portfolio management (PP
   portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis,
   and portfolio dashboards across cloud and on-premises deployments.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
