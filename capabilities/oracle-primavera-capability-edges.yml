@@ -1,0 +1,46 @@
+slug: oracle-primavera
+provider: Oracle Primavera
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Engineering Services
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Activities
+  spec_file: oracle-primavera-activities-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.85
+  evidence: '"List activities", "Create an activity", "Update an activity"; description: "activity schedules,
+    resource assignments, critical path analysis"'
+  reason: CRUD over schedule activities in a project portfolio management tool is core project planning
+    and tracking, mapping to Project Management.
+- tag: Projects
+  spec_file: oracle-primavera-projects-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.85
+  evidence: '"Create a project", "Update a project", "Delete a project"; schemas Project, ProjectCreate'
+  reason: Full lifecycle management of project records in an enterprise project portfolio management application
+    — plainly Project Management.
+- tag: WBS
+  spec_file: oracle-primavera-wbs-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.7
+  evidence: GET /wbss listWBS "List WBS elements"; schema "WBSElement"; "programmatic access to enterprise
+    project portfolio management data including WBS structures, activity schedules"
+  reason: The tag exposes work-breakdown-structure elements of projects in a project portfolio management
+    tool — project planning/structuring, i.e. Project Management. Chose the cross-industry PPM capability
+    rather than an engineering-discipline one because P6 WBS is generic project scheduling structure,
+    not discipline-specific engineering deliverable planning.
