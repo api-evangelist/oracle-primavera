@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Oracle Primavera P6 EPPM REST Activities API
   description: Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.
@@ -133,6 +133,60 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ActivityUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        PercentComplete:
+          type: number
+          format: double
+        ActualStartDate:
+          type: string
+          format: date-time
+        ActualFinishDate:
+          type: string
+          format: date-time
+        RemainingDuration:
+          type: number
+          format: double
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
+    ActivityCreate:
+      type: object
+      required:
+      - Name
+      - Id
+      - ProjectObjectId
+      - WBSObjectId
+      properties:
+        Id:
+          type: string
+        Name:
+          type: string
+        ProjectObjectId:
+          type: integer
+        WBSObjectId:
+          type: integer
+        Type:
+          type: string
+          enum:
+          - Task Dependent
+          - Resource Dependent
+          - Level of Effort
+          - Start Milestone
+          - Finish Milestone
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
     Activity:
       type: object
       description: A project schedule activity
@@ -214,63 +268,9 @@ components:
           type: boolean
         CalendarObjectId:
           type: integer
-    Error:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        ErrorMessage:
-          type: string
-    ActivityCreate:
-      type: object
-      required:
-      - Name
-      - Id
-      - ProjectObjectId
-      - WBSObjectId
-      properties:
-        Id:
-          type: string
-        Name:
-          type: string
-        ProjectObjectId:
-          type: integer
-        WBSObjectId:
-          type: integer
-        Type:
-          type: string
-          enum:
-          - Task Dependent
-          - Resource Dependent
-          - Level of Effort
-          - Start Milestone
-          - Finish Milestone
-        PlannedStartDate:
-          type: string
-          format: date-time
-        PlannedFinishDate:
-          type: string
-          format: date-time
-    ActivityUpdate:
-      type: object
-      properties:
-        ObjectId:
-          type: integer
-        PercentComplete:
-          type: number
-          format: double
-        ActualStartDate:
-          type: string
-          format: date-time
-        ActualFinishDate:
-          type: string
-          format: date-time
-        RemainingDuration:
-          type: number
-          format: double
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
@@ -281,8 +281,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

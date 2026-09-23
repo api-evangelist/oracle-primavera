@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Oracle Primavera P6 EPPM REST Activities Projects API
+  title: Oracle Primavera P6 EPPM REST Projects API
   description: Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.
   version: 26.0.0
   contact:
@@ -162,14 +162,8 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request parameters
+    ServerError:
+      description: Internal server error
       content:
         application/json:
           schema:
@@ -180,33 +174,28 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Internal server error
+    BadRequest:
+      description: Invalid request parameters
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ObjectId:
+      name: objectId
+      in: path
+      required: true
+      description: Unique numeric ObjectId
+      schema:
+        type: integer
+        format: int64
   schemas:
-    ProjectUpdate:
-      type: object
-      properties:
-        ObjectId:
-          type: integer
-        Name:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Active
-          - Inactive
-          - What-if
-          - Planned
-        DataDate:
-          type: string
-          format: date-time
-        PercentComplete:
-          type: number
-          format: double
     Error:
       type: object
       properties:
@@ -285,6 +274,26 @@ components:
         CreateDate:
           type: string
           format: date-time
+    ProjectUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        Name:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          - What-if
+          - Planned
+        DataDate:
+          type: string
+          format: date-time
+        PercentComplete:
+          type: number
+          format: double
     ProjectCreate:
       type: object
       required:
@@ -309,15 +318,6 @@ components:
           format: date-time
         WBSObjectId:
           type: integer
-  parameters:
-    ObjectId:
-      name: objectId
-      in: path
-      required: true
-      description: Unique numeric ObjectId
-      schema:
-        type: integer
-        format: int64
   securitySchemes:
     basicAuth:
       type: http

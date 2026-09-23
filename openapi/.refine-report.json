@@ -1,12 +1,7 @@
 {
   "provider": "oracle-primavera",
   "sources": [
-    "oracle-primavera-activities-api-openapi.yml",
-    "oracle-primavera-baselines-api-openapi.yml",
-    "oracle-primavera-projects-api-openapi.yml",
-    "oracle-primavera-resourceassignments-api-openapi.yml",
-    "oracle-primavera-resources-api-openapi.yml",
-    "oracle-primavera-wbs-api-openapi.yml"
+    "_original/oracle-primavera-p6-eppm-openapi.yml"
   ],
   "outputs": [
     "oracle-primavera-activities-api-openapi.yml",
@@ -16,9 +11,23 @@
     "oracle-primavera-resources-api-openapi.yml",
     "oracle-primavera-wbs-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "oracle-primavera-p6-eppm-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: oracle-primavera-resource-assignments-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 9 total)"
+  ],
+  "skipped": [
+    "oracle-primavera-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-primavera-baselines-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-primavera-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-primavera-resource-assignments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-primavera-resources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-primavera-wbs-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

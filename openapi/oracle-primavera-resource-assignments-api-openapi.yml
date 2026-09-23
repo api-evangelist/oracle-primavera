@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Oracle Primavera P6 EPPM REST Activities ResourceAssignments API
+  title: Oracle Primavera P6 EPPM REST Resource Assignments API
   description: Oracle Primavera P6 EPPM REST API provides programmatic access to enterprise project portfolio management data including WBS structures, activity schedules, resource assignments, critical path analysis, and portfolio dashboards. Available for both cloud and on-premises deployments.
   version: 26.0.0
   contact:
@@ -20,7 +20,7 @@ security:
 - basicAuth: []
 - oauth2: []
 tags:
-- name: ResourceAssignments
+- name: Resource Assignments
   description: Resource assignment operations
 paths:
   /resourceassignments:
@@ -29,7 +29,7 @@ paths:
       summary: List resource assignments
       description: Returns resource-to-activity assignments with planned and actual units.
       tags:
-      - ResourceAssignments
+      - Resource Assignments
       parameters:
       - name: Fields
         in: query
