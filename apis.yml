@@ -42,7 +42,7 @@ tags:
 - Engineering
 - Project Management
 - Scheduling
-- Portfolio-Management
+- Portfolio Management
 - Oracle
 tags_raw:
 - Construction
@@ -51,6 +51,7 @@ tags_raw:
 - Scheduling
 - Portfolio Management
 - Oracle
+- Portfolio-Management
 apis:
 - name: Oracle Primavera Gateway Integration API
   description: >-

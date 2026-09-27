@@ -150,13 +150,6 @@ components:
         RemainingDuration:
           type: number
           format: double
-    Error:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        ErrorMessage:
-          type: string
     ActivityCreate:
       type: object
       required:
@@ -187,6 +180,13 @@ components:
         PlannedFinishDate:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
     Activity:
       type: object
       description: A project schedule activity
@@ -268,6 +268,15 @@ components:
           type: boolean
         CalendarObjectId:
           type: integer
+  parameters:
+    ObjectId:
+      name: objectId
+      in: path
+      required: true
+      description: Unique numeric ObjectId
+      schema:
+        type: integer
+        format: int64
   responses:
     Unauthorized:
       description: Authentication required
@@ -287,15 +296,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    ObjectId:
-      name: objectId
-      in: path
-      required: true
-      description: Unique numeric ObjectId
-      schema:
-        type: integer
-        format: int64
   securitySchemes:
     basicAuth:
       type: http
