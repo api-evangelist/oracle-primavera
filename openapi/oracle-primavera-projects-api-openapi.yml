@@ -161,18 +161,9 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    ObjectId:
-      name: objectId
-      in: path
-      required: true
-      description: Unique numeric ObjectId
-      schema:
-        type: integer
-        format: int64
   responses:
-    Unauthorized:
-      description: Authentication required
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -189,64 +180,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        ErrorMessage:
-          type: string
-    ProjectUpdate:
-      type: object
-      properties:
-        ObjectId:
-          type: integer
-        Name:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Active
-          - Inactive
-          - What-if
-          - Planned
-        DataDate:
-          type: string
-          format: date-time
-        PercentComplete:
-          type: number
-          format: double
-    ProjectCreate:
-      type: object
-      required:
-      - Name
-      - Id
-      - WBSObjectId
-      properties:
-        Id:
-          type: string
-        Name:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Active
-          - Inactive
-          - What-if
-          - Planned
-          default: Active
-        PlannedStartDate:
-          type: string
-          format: date-time
-        WBSObjectId:
-          type: integer
     Project:
       type: object
       description: An Oracle Primavera P6 project
@@ -318,6 +258,66 @@ components:
         CreateDate:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
+    ProjectCreate:
+      type: object
+      required:
+      - Name
+      - Id
+      - WBSObjectId
+      properties:
+        Id:
+          type: string
+        Name:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          - What-if
+          - Planned
+          default: Active
+        PlannedStartDate:
+          type: string
+          format: date-time
+        WBSObjectId:
+          type: integer
+    ProjectUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        Name:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          - What-if
+          - Planned
+        DataDate:
+          type: string
+          format: date-time
+        PercentComplete:
+          type: number
+          format: double
+  parameters:
+    ObjectId:
+      name: objectId
+      in: path
+      required: true
+      description: Unique numeric ObjectId
+      schema:
+        type: integer
+        format: int64
   securitySchemes:
     basicAuth:
       type: http

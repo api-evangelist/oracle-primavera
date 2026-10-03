@@ -63,6 +63,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
     ResourceAssignment:
       type: object
       description: An assignment of a resource to an activity
@@ -111,13 +118,6 @@ components:
           - Resource
           - Override
           - Role
-    Error:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        ErrorMessage:
-          type: string
   responses:
     Unauthorized:
       description: Authentication required

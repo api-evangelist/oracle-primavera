@@ -53,6 +53,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
     Baseline:
       type: object
       description: A project baseline snapshot
@@ -73,13 +80,6 @@ components:
         LastUpdateDate:
           type: string
           format: date-time
-    Error:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        ErrorMessage:
-          type: string
   responses:
     Unauthorized:
       description: Authentication required

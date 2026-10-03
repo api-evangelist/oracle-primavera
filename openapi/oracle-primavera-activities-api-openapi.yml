@@ -132,61 +132,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    ActivityUpdate:
-      type: object
-      properties:
-        ObjectId:
-          type: integer
-        PercentComplete:
-          type: number
-          format: double
-        ActualStartDate:
-          type: string
-          format: date-time
-        ActualFinishDate:
-          type: string
-          format: date-time
-        RemainingDuration:
-          type: number
-          format: double
-    ActivityCreate:
-      type: object
-      required:
-      - Name
-      - Id
-      - ProjectObjectId
-      - WBSObjectId
-      properties:
-        Id:
-          type: string
-        Name:
-          type: string
-        ProjectObjectId:
-          type: integer
-        WBSObjectId:
-          type: integer
-        Type:
-          type: string
-          enum:
-          - Task Dependent
-          - Resource Dependent
-          - Level of Effort
-          - Start Milestone
-          - Finish Milestone
-        PlannedStartDate:
-          type: string
-          format: date-time
-        PlannedFinishDate:
-          type: string
-          format: date-time
-    Error:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        ErrorMessage:
-          type: string
     Activity:
       type: object
       description: A project schedule activity
@@ -268,6 +233,60 @@ components:
           type: boolean
         CalendarObjectId:
           type: integer
+    ActivityCreate:
+      type: object
+      required:
+      - Name
+      - Id
+      - ProjectObjectId
+      - WBSObjectId
+      properties:
+        Id:
+          type: string
+        Name:
+          type: string
+        ProjectObjectId:
+          type: integer
+        WBSObjectId:
+          type: integer
+        Type:
+          type: string
+          enum:
+          - Task Dependent
+          - Resource Dependent
+          - Level of Effort
+          - Start Milestone
+          - Finish Milestone
+        PlannedStartDate:
+          type: string
+          format: date-time
+        PlannedFinishDate:
+          type: string
+          format: date-time
+    ActivityUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        PercentComplete:
+          type: number
+          format: double
+        ActualStartDate:
+          type: string
+          format: date-time
+        ActualFinishDate:
+          type: string
+          format: date-time
+        RemainingDuration:
+          type: number
+          format: double
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
   parameters:
     ObjectId:
       name: objectId
@@ -277,25 +296,6 @@ components:
       schema:
         type: integer
         format: int64
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

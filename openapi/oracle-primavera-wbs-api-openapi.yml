@@ -63,6 +63,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
     WBSElement:
       type: object
       description: A Work Breakdown Structure element
@@ -87,13 +94,6 @@ components:
           - Inactive
         OBSObjectId:
           type: integer
-    Error:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        ErrorMessage:
-          type: string
   responses:
     Unauthorized:
       description: Authentication required
