@@ -132,25 +132,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Activity:
       type: object
@@ -233,6 +214,30 @@ components:
           type: boolean
         CalendarObjectId:
           type: integer
+    ActivityUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        PercentComplete:
+          type: number
+          format: double
+        ActualStartDate:
+          type: string
+          format: date-time
+        ActualFinishDate:
+          type: string
+          format: date-time
+        RemainingDuration:
+          type: number
+          format: double
+    Error:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        ErrorMessage:
+          type: string
     ActivityCreate:
       type: object
       required:
@@ -263,30 +268,25 @@ components:
         PlannedFinishDate:
           type: string
           format: date-time
-    ActivityUpdate:
-      type: object
-      properties:
-        ObjectId:
-          type: integer
-        PercentComplete:
-          type: number
-          format: double
-        ActualStartDate:
-          type: string
-          format: date-time
-        ActualFinishDate:
-          type: string
-          format: date-time
-        RemainingDuration:
-          type: number
-          format: double
-    Error:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        ErrorMessage:
-          type: string
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     ObjectId:
       name: objectId

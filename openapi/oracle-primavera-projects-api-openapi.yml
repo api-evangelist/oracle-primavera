@@ -161,32 +161,27 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    ProjectUpdate:
+      type: object
+      properties:
+        ObjectId:
+          type: integer
+        Name:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          - What-if
+          - Planned
+        DataDate:
+          type: string
+          format: date-time
+        PercentComplete:
+          type: number
+          format: double
     Project:
       type: object
       description: An Oracle Primavera P6 project
@@ -289,26 +284,31 @@ components:
           format: date-time
         WBSObjectId:
           type: integer
-    ProjectUpdate:
-      type: object
-      properties:
-        ObjectId:
-          type: integer
-        Name:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Active
-          - Inactive
-          - What-if
-          - Planned
-        DataDate:
-          type: string
-          format: date-time
-        PercentComplete:
-          type: number
-          format: double
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     ObjectId:
       name: objectId
