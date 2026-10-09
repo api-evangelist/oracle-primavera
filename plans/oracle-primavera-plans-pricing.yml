@@ -141,3 +141,40 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - compute
+  - request
+  - seat
+  plans:
+  - name: Oracle Primavera Cloud
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - request
+    - seat
+    periods:
+    - month
+  - name: Primavera P6 EPPM (On-Premises)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - compute
+    - seat
+    periods:
+    - year
+  - name: Enterprise Agreement
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - year
