@@ -1,0 +1,15 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- https://www.oracle.com/construction-engineering/primavera-cloud-project-management/integrations/
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: oracle-primavera
+  url: https://www.oracle.com/construction-engineering/primavera-cloud-project-management/integrations/
+  app_count: null
+  adapter: sweep-construction.py:unreadable
+  listed: 0
+  status: not-machine-readable (HTTP 403; no integrations page (404); Oracle PartnerNetwork has no public listing
+    data)
+edges: []
