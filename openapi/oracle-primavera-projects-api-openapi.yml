@@ -162,11 +162,22 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    ProjectUpdate:
+    Error:
       type: object
       properties:
-        ObjectId:
+        ErrorCode:
           type: integer
+        ErrorMessage:
+          type: string
+    ProjectCreate:
+      type: object
+      required:
+      - Name
+      - Id
+      - WBSObjectId
+      properties:
+        Id:
+          type: string
         Name:
           type: string
         Status:
@@ -176,12 +187,12 @@ components:
           - Inactive
           - What-if
           - Planned
-        DataDate:
+          default: Active
+        PlannedStartDate:
           type: string
           format: date-time
-        PercentComplete:
-          type: number
-          format: double
+        WBSObjectId:
+          type: integer
     Project:
       type: object
       description: An Oracle Primavera P6 project
@@ -253,22 +264,11 @@ components:
         CreateDate:
           type: string
           format: date-time
-    Error:
+    ProjectUpdate:
       type: object
       properties:
-        ErrorCode:
+        ObjectId:
           type: integer
-        ErrorMessage:
-          type: string
-    ProjectCreate:
-      type: object
-      required:
-      - Name
-      - Id
-      - WBSObjectId
-      properties:
-        Id:
-          type: string
         Name:
           type: string
         Status:
@@ -278,12 +278,12 @@ components:
           - Inactive
           - What-if
           - Planned
-          default: Active
-        PlannedStartDate:
+        DataDate:
           type: string
           format: date-time
-        WBSObjectId:
-          type: integer
+        PercentComplete:
+          type: number
+          format: double
   responses:
     BadRequest:
       description: Invalid request parameters
@@ -291,14 +291,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
+    ServerError:
+      description: Internal server error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Internal server error
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
